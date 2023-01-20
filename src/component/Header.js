@@ -1,25 +1,58 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+
+const HeaderStyle = styled.header`
+  height: 100px;
+  margin: 0 auto;
+  line-height: 100px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 50px;
+
+  .container {
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+  }
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+  }
+  ul {
+    display: flex;
+    gap: 30px;
+  }
+`;
 
 const Header = () => {
   return (
-    <header className="Header">
-      <h1>Go Camping</h1>
-      <ul>
-        <li>
-          <NavLink to="/region">지역별</NavLink>
-        </li>
-        <li>
-          <NavLink>테마별</NavLink>
-        </li>
-        <li>
-          <NavLink>공지시항</NavLink>
-        </li>
-        <li>
-          <NavLink>문의사항</NavLink>
-        </li>
-      </ul>
-    </header>
+    <HeaderStyle className="Header">
+      <div className="container">
+        <h1>Go Camping</h1>
+        <ul>
+          <li>
+            <NavLink to="/region">지역별</NavLink>
+          </li>
+          <li>
+            <NavLink>테마별</NavLink>
+          </li>
+          <li>
+            <NavLink>공지시항</NavLink>
+          </li>
+          <li>
+            <NavLink>문의사항</NavLink>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <NavLink>로그인</NavLink>
+          </li>
+          <li>
+            <NavLink>회원가입</NavLink>
+          </li>
+        </ul>
+      </div>
+    </HeaderStyle>
   );
 };
 
