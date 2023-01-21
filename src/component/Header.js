@@ -21,6 +21,7 @@ const HeaderStyle = styled.header`
   ul {
     display: flex;
     gap: 30px;
+    font-size: 19px;
   }
 `;
 
@@ -28,7 +29,9 @@ const Header = () => {
   return (
     <HeaderStyle className="Header">
       <div className="container">
-        <h1>Go Camping</h1>
+        <h1>
+          <NavLink to="/">Go Camping</NavLink>
+        </h1>
         <ul>
           <li>
             <NavLink to="/region">지역별</NavLink>

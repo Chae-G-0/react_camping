@@ -1,32 +1,31 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
 
 const RegionList = styled.ul`
-    display: flex;
-    gap: 20px;
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 19px;
 `;
 
-const Region = () => {
+const Region = ({ camp }) => {
   return (
-    <div>
-      <RegionList>
-        <li>서울</li>
-        <li>경기</li>
-        <li>강원</li>
-        <li>인천</li>
-        <li>부산</li>
-        <li>대전</li>
-        <li>대구</li>
-        <li>울산</li>
-        <li>충청북도</li>
-        <li>충청남도</li>
-        <li>전라북도</li>
-        <li>전라남도</li>
-        <li>경상북도</li>
-        <li>경상남도</li>
-      </RegionList>
-    </div>
+    <RegionList>
+      <li>서울</li>
+      <li>경기</li>
+      <li>강원</li>
+      <li>인천</li>
+      <li>부산</li>
+      <li>대전</li>
+      <li>대구</li>
+      <li>울산</li>
+      <li>충청도</li>
+      <li>전라도</li>
+      <li>경상도</li>
+      <li>제주도</li>
+    </RegionList>
   );
-}
+};
 
-export default Region
+export default Region;
