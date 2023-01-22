@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import Camp from "./component/Camp";
 import Header from "./component/Header";
 import Region from "./pages/Region";
@@ -21,8 +21,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" />
-        <Route path="/region" element={<Region camp={camp} />} />
-        <Route path="/camp" element={<Camp camp={camp} />} />
+        <Route path="/region" element={<Region camp={camp} />}>
+          <Route path="camp" element={<Camp camp={camp} />} />
+        </Route>
+        {/* <Route path="/region" element={<Region camp={camp} />} /> */}
       </Routes>
     </div>
   );
