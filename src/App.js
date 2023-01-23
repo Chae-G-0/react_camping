@@ -7,13 +7,19 @@ import Header from "./component/Header";
 import Region from "./pages/Region";
 
 function App() {
-  const [camp, setCamp] = useState("");
+  const [camp, setCamp] = useState([]);
+  const [cityList, setCityList] = useState([]);
 
   useEffect(() => {
     const url =
       "https://apis.data.go.kr/B551011/GoCamping/basedList?numOfRows=100&pageNo=1&MobileOS=WIN&MobileApp=camping&serviceKey=ywRlJa7ppqDu3r%2BZgaoE4hxgKL03rb%2FZH6YKSCyaOqRJZa%2B7MMiFJBXuSswp2Hph6Go86ji9%2BmET3T%2BKutJnFg%3D%3D&_type=json";
     axios.get(url).then((res) => {
       setCamp(res.data.response.body.items.item);
+      const doNm = res.data.response.body.items.item
+        .map((it) => it.doNm)
+        .sort();
+      const doList = new Set(doNm);
+      setCityList(doList);
     });
   }, []);
   return (
@@ -21,10 +27,15 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" />
-        <Route path="/region" element={<Region camp={camp} />}>
-          <Route path="camp" element={<Camp camp={camp} />} />
+        <Route
+          path="/region"
+          element={<Region camp={camp} cityList={cityList} />}
+        >
+          <Route
+            path="camp/:id"
+            element={<Camp camp={camp} cityList={cityList} />}
+          />
         </Route>
-        {/* <Route path="/region" element={<Region camp={camp} />} /> */}
       </Routes>
     </div>
   );

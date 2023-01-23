@@ -7,15 +7,23 @@
     grid-template-columns: repeat(3, 1fr);
 
     .campBox {
-            cursor: pointer;
+        cursor: pointer;
+
         img {
                 margin: 0 0 15px 0;
+                border-radius: 15px;
+                &:hover {
+                    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+                }
             }
 
         h3 {
-            font-size: 19px;
-            font-weight: 700;
-            margin: 0 0 10px 0;
+                font-size: 19px;
+                font-weight: 700;
+                margin: 0 0 10px 0;
+                &:hover {
+                    text-decoration: underline;
+                }
         }
 
         p {

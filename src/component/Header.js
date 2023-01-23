@@ -32,7 +32,7 @@ const Header = () => {
         <h1>
           <NavLink to="/">Go Camping</NavLink>
         </h1>
-        <ul>
+        <ul className="gnb">
           <li>
             <NavLink to="/region">지역별</NavLink>
           </li>
