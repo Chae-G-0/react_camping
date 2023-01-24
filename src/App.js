@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Camp from "./component/Camp";
 import Header from "./component/Header";
+import Totop from "./component/Totop";
 import Region from "./pages/Region";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <div style={{height: '1200px', background: '#ddd'}}>메인페이지</div>
       <Routes>
         <Route path="/" />
         <Route
@@ -37,6 +39,7 @@ function App() {
           />
         </Route>
       </Routes>
+      <Totop/>
     </div>
   );
 }
