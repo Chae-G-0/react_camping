@@ -5,6 +5,8 @@ import "./App.scss";
 import Camp from "./component/Camp";
 import Header from "./component/Header";
 import Totop from "./component/Totop";
+import Detail from "./pages/Detail";
+import Main from "./pages/Main";
 import Region from "./pages/Region";
 
 function App() {
@@ -26,20 +28,20 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div style={{height: '1200px', background: '#ddd'}}>메인페이지</div>
       <Routes>
-        <Route path="/" />
+        <Route path="/" element={<Main />} />
         <Route
           path="/region"
           element={<Region camp={camp} cityList={cityList} />}
         >
           <Route
-            path="camp/:id"
+            path="camp/*"
             element={<Camp camp={camp} cityList={cityList} />}
           />
         </Route>
+        <Route path="/detail" element={ <Detail/>} />
       </Routes>
-      <Totop/>
+      <Totop />
     </div>
   );
 }

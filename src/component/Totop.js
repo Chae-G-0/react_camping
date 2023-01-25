@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { gsap } from "gsap";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
+import { FiArrowUp } from "react-icons/fi";
 
 const Btn = styled.div`
   position: fixed;
   bottom: 100px;
   right: 100px;
   color: #fff;
-  background: #000;
+  background: green;
   font-size: 30px;
   padding: 10px;
   border-radius: 50%;
@@ -20,7 +21,6 @@ const Btn = styled.div`
   &.on {
     visibility: visible;
     opacity: 1;
-    border: 1px solid #fff;
   }
 `;
 
@@ -48,7 +48,7 @@ const Totop = () => {
 
   return (
     <Btn onClick={totopHandler} className={scrollY > 400 && "on"}>
-      <i className="xi-arrow-up"></i>
+      <FiArrowUp></FiArrowUp>
     </Btn>
   );
 };

@@ -13,19 +13,19 @@ const NoImg = styled.div`
 `;
 
 const Camp = ({ camp }) => {
-  const { id } = useParams();
+  const { doNm } = useParams();
   const [locate, setLocate] = useState([]);
-  const filter = [...camp].filter((it) => it.doNm == id);
+  const filter = [...camp].filter((it) => doNm == it.doNm);
   useEffect(() => {
     setLocate(filter);
-  }, [id, camp]);
+  }, [doNm, camp]);
 
   return (
     <div className="container">
       {[...camp].map((it, idx) => {
         return (
           <div className="campBox" key={idx}>
-            <Link>
+            <Link to="/detail">
               <figure>
                 {it.firstImageUrl.length > 1 ? (
                   <img src={it.firstImageUrl} alt="" />
@@ -36,7 +36,7 @@ const Camp = ({ camp }) => {
               <h3>{it.facltNm}</h3>
               <p>{it.addr1}</p>
               <p>{it.tel}</p>
-              {/* <p>{it.doNm}</p> */}
+              <p>{it.doNm}</p>
             </Link>
           </div>
         );

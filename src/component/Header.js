@@ -7,7 +7,6 @@ const HeaderStyle = styled.header`
   margin: 0 auto;
   line-height: 100px;
   border-bottom: 1px solid #ddd;
-  margin-bottom: 50px;
 
   .container {
     width: 1200px;

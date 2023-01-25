@@ -1,14 +1,24 @@
 // import React, { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Camp from "../component/Camp";
+import Totop from "../component/Totop";
 
 const RegionList = styled.ul`
   width: 1200px;
   margin: 50px auto;
   display: flex;
   justify-content: space-between;
-  font-size: 21px;
+  font-size: 19px;
+  li {
+    border: 1px solid #000;
+    padding 5px 10px;
+    border-radius: 15px; 
+    :hover {
+      background: #000;
+      color: #fff;
+    }
+  }
 `;
 
 const Region = ({ camp, cityList }) => {
@@ -16,18 +26,19 @@ const Region = ({ camp, cityList }) => {
     <div>
       <RegionList>
         <li>
-          <Link to='/region'>전체</Link>
+          <Link to="/region">전체</Link>
         </li>
-        {[cityList].map((it, idx) => {
+        {[...cityList].map((it, idx) => {
           return (
             <li key={idx}>
-              <Link to={`/camp/${it}`}>{it}</Link>
+              <NavLink to={`/camp/${it}`}>{it}</NavLink>
             </li>
           );
         })}
       </RegionList>
-      <Outlet></Outlet>
+      <Outlet/>
       <Camp camp={camp} />
+      <Totop />
     </div>
   );
 };
