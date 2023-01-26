@@ -1,4 +1,4 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Camp from "../component/Camp";
@@ -9,21 +9,28 @@ const RegionList = styled.ul`
   margin: 50px auto;
   display: flex;
   justify-content: space-between;
-  font-size: 19px;
+  font-size: 17px;
+  font-weight: 500;
   li {
-    border: 1px solid #000;
+    border: 1px solid #777;
     padding 5px 10px;
     border-radius: 15px; 
     :hover {
-      background: #000;
+      background: #777;
       color: #fff;
     }
   }
 `;
 
-const Region = ({ camp, cityList }) => {
+const Region = ({ campingData, cityList }) => {
+  // const [decoding, setDecoding] = useState()
+  // const deco = decodeURIComponent(String([...cityList]));
+  // useEffect(() => {
+  //   setDecoding(deco);
+  // }, [cityList]);
+  // console.log(deco);
   return (
-    <div>
+    <div className="Region">
       <RegionList>
         <li>
           <Link to="/region">전체</Link>
@@ -36,8 +43,8 @@ const Region = ({ camp, cityList }) => {
           );
         })}
       </RegionList>
-      <Outlet/>
-      <Camp camp={camp} />
+      <Outlet />
+      <Camp campingData={campingData} />
       <Totop />
     </div>
   );

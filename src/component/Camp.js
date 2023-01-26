@@ -12,35 +12,39 @@ const NoImg = styled.div`
   justify-content: center;
 `;
 
-const Camp = ({ camp }) => {
+const Camp = ({ campingData }) => {
   const { doNm } = useParams();
   const [locate, setLocate] = useState([]);
-  const filter = [...camp].filter((it) => doNm == it.doNm);
+  const filter = [...campingData].filter((it) => doNm === it.doNm);
   useEffect(() => {
     setLocate(filter);
-  }, [doNm, camp]);
+  }, [doNm, campingData]);
 
   return (
-    <div className="container">
-      {[...camp].map((it, idx) => {
-        return (
-          <div className="campBox" key={idx}>
-            <Link to="/detail">
-              <figure>
-                {it.firstImageUrl.length > 1 ? (
-                  <img src={it.firstImageUrl} alt="" />
-                ) : (
-                  <NoImg>등록된 사진이 없습니다.</NoImg>
-                )}
-              </figure>
-              <h3>{it.facltNm}</h3>
-              <p>{it.addr1}</p>
-              <p>{it.tel}</p>
-              <p>{it.doNm}</p>
-            </Link>
-          </div>
-        );
-      })}
+    <div>
+      {locate && (
+        <div className="container">
+          {[...campingData].map((it, idx) => {
+            return (
+              <div className="campBox" key={idx}>
+                <Link to={`/detail/${it.contentId}`}>
+                  <figure>
+                    {it.firstImageUrl.length > 1 ? (
+                      <img src={it.firstImageUrl} alt="" />
+                    ) : (
+                      <NoImg>등록된 사진이 없습니다.</NoImg>
+                    )}
+                  </figure>
+                  <h3>{it.facltNm}</h3>
+                  <p>{it.addr1}</p>
+                  <p>{it.tel}</p>
+                  <p>{it.doNm}</p>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };
