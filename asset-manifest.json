@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react_camping/static/css/main.89d07175.css",
+    "main.js": "/react_camping/static/js/main.e301d88c.js",
+    "index.html": "/react_camping/index.html",
+    "main.89d07175.css.map": "/react_camping/static/css/main.89d07175.css.map",
+    "main.e301d88c.js.map": "/react_camping/static/js/main.e301d88c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.89d07175.css",
+    "static/js/main.e301d88c.js"
+  ]
+}
