@@ -35,7 +35,7 @@ function App() {
           element={<Region campingData={campingData} cityList={cityList} />}
         >
           <Route
-            path="camp/*"
+            path="camp/:doNm"
             element={<Camp campingData={campingData} cityList={cityList} />}
           />
         </Route>

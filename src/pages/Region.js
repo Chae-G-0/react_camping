@@ -23,22 +23,16 @@ const RegionList = styled.ul`
 `;
 
 const Region = ({ campingData, cityList }) => {
-  // const [decoding, setDecoding] = useState()
-  // const deco = decodeURIComponent(String([...cityList]));
-  // useEffect(() => {
-  //   setDecoding(deco);
-  // }, [cityList]);
-  // console.log(deco);
   return (
     <div className="Region">
       <RegionList>
         <li>
           <Link to="/region">전체</Link>
         </li>
-        {[...cityList].map((it, idx) => {
+        {[...cityList].map((doNm, idx) => {
           return (
             <li key={idx}>
-              <NavLink to={`/camp/${it}`}>{it}</NavLink>
+              <NavLink to={`/region/camp/${doNm}`}>{doNm}</NavLink>
             </li>
           );
         })}

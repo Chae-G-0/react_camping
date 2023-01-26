@@ -15,16 +15,17 @@ const NoImg = styled.div`
 const Camp = ({ campingData }) => {
   const { doNm } = useParams();
   const [locate, setLocate] = useState([]);
-  const filter = [...campingData].filter((it) => doNm === it.doNm);
+  const filterDt = [...campingData].filter((it) => it.doNm == doNm);
+  console.log(filterDt);
   useEffect(() => {
-    setLocate(filter);
-  }, [doNm, campingData]);
+    setLocate(filterDt);
+  }, [doNm]);
 
   return (
     <div>
       {locate && (
         <div className="container">
-          {[...campingData].map((it, idx) => {
+          {[...locate].map((it, idx) => {
             return (
               <div className="campBox" key={idx}>
                 <Link to={`/detail/${it.contentId}`}>
@@ -37,8 +38,7 @@ const Camp = ({ campingData }) => {
                   </figure>
                   <h3>{it.facltNm}</h3>
                   <p>{it.addr1}</p>
-                  <p>{it.tel}</p>
-                  <p>{it.doNm}</p>
+                  {/* <p>{it.doNm}</p> */}
                 </Link>
               </div>
             );

@@ -41,6 +41,10 @@ const Detail = ({ campingData }) => {
               <span>{it.lineIntro}</span>
               <p>{it.addr1}</p>
               <p>{it.tel}</p>
+              <div>
+                <h4>캠핑장 부대시설 정보</h4>
+                <div className="facInfo"></div>
+              </div>
             </div>
           </div>
         );
