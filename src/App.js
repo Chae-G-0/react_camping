@@ -8,6 +8,7 @@ import Totop from "./component/Totop";
 import Detail from "./pages/Detail";
 import Main from "./pages/Main";
 import Region from "./pages/Region";
+import Thema from "./pages/Thema";
 
 function App() {
   const [campingData, setCampingData] = useState([]);
@@ -40,6 +41,7 @@ function App() {
           />
         </Route>
         <Route path="/detail/:id" element={<Detail campingData={campingData} />} />
+        <Route path="/thema" element={<Thema campingData={campingData} />} />
       </Routes>
       <Totop />
     </div>

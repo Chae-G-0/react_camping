@@ -15,11 +15,10 @@ const NoImg = styled.div`
 const Camp = ({ campingData }) => {
   const { doNm } = useParams();
   const [locate, setLocate] = useState([]);
-  const filterDt = [...campingData].filter((it) => it.doNm == doNm);
-  console.log(filterDt);
+  const filterDt = [...campingData].filter((it) => it.doNm === doNm);
   useEffect(() => {
     setLocate(filterDt);
-  }, [doNm]);
+  }, [doNm, filterDt]);
 
   return (
     <div>
@@ -38,13 +37,15 @@ const Camp = ({ campingData }) => {
                   </figure>
                   <h3>{it.facltNm}</h3>
                   <p>{it.addr1}</p>
-                  {/* <p>{it.doNm}</p> */}
                 </Link>
               </div>
             );
           })}
         </div>
-      )}
+      )
+      
+      
+      }
     </div>
   );
 };

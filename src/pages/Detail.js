@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import "../Detail.scss"
+import "../Detail.scss";
 
 const NoImg = styled.div`
   flex: 1;
@@ -23,10 +23,10 @@ const Detail = ({ campingData }) => {
   );
   useEffect(() => {
     setDetailInfo(detail);
-  }, []);
+  }, [detail]);
   return (
     <div className="Detail">
-      {detailInfo.map(it => {
+      {detailInfo.map((it) => {
         return (
           <div className="infoBox" key={it.contentId}>
             <figure>
@@ -42,8 +42,19 @@ const Detail = ({ campingData }) => {
               <p>{it.addr1}</p>
               <p>{it.tel}</p>
               <div>
-                <h4>캠핑장 부대시설 정보</h4>
-                <div className="facInfo"></div>
+                <div className="facInfo">
+                  <h4>캠핑장 부대시설 정보</h4>
+                  <p>{it.sbrsCl}</p>
+                  <p>애견 동반 : {it.animalCmgCl}</p>
+                  <p>
+                    개인 트레일러 사용 :{" "}
+                    {it.trlerAcmpnyAt === "Y" ? "가능" : "불가능"}
+                  </p>
+                  <p>
+                    개인 카라반 사용 :{" "}
+                    {it.caravAcmpnyAt === "Y" ? "가능" : "불가능"}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
