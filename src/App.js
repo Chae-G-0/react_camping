@@ -8,6 +8,8 @@ import Totop from "./component/Totop";
 import Detail from "./pages/Detail";
 import Main from "./pages/Main";
 import Region from "./pages/Region";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
 import Thema from "./pages/Thema";
 
 function App() {
@@ -42,6 +44,8 @@ function App() {
         </Route>
         <Route path="/detail/:id" element={<Detail campingData={campingData} />} />
         <Route path="/thema" element={<Thema campingData={campingData} />} />
+        <Route path="/signin" element={<Signin  />} />
+        <Route path="/signup" element={<Signup  />} />
       </Routes>
       <Totop />
     </div>

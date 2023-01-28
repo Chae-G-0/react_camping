@@ -36,7 +36,7 @@ const Header = () => {
             <NavLink to="/region">지역별</NavLink>
           </li>
           <li>
-            <NavLink>테마별</NavLink>
+            <NavLink to="/thema">테마별</NavLink>
           </li>
           <li>
             <NavLink>공지시항</NavLink>
@@ -47,10 +47,10 @@ const Header = () => {
         </ul>
         <ul>
           <li>
-            <NavLink>로그인</NavLink>
+            <NavLink to="/signin">로그인</NavLink>
           </li>
           <li>
-            <NavLink>회원가입</NavLink>
+            <NavLink to="/signup">회원가입</NavLink>
           </li>
         </ul>
       </div>
