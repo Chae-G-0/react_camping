@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react_camping/static/css/main.89d07175.css",
-    "main.js": "/react_camping/static/js/main.e301d88c.js",
+    "main.css": "/react_camping/static/css/main.2e1a18fb.css",
+    "main.js": "/react_camping/static/js/main.2d3dc8e1.js",
     "index.html": "/react_camping/index.html",
-    "main.89d07175.css.map": "/react_camping/static/css/main.89d07175.css.map",
-    "main.e301d88c.js.map": "/react_camping/static/js/main.e301d88c.js.map"
+    "main.2e1a18fb.css.map": "/react_camping/static/css/main.2e1a18fb.css.map",
+    "main.2d3dc8e1.js.map": "/react_camping/static/js/main.2d3dc8e1.js.map"
   },
   "entrypoints": [
-    "static/css/main.89d07175.css",
-    "static/js/main.e301d88c.js"
+    "static/css/main.2e1a18fb.css",
+    "static/js/main.2d3dc8e1.js"
   ]
 }
