@@ -8,6 +8,7 @@ const SignUpBox = styled.div`
   display: flex;
   flex-direction: column;
   h2 {
+    text-align: center;
     font-size: 21px;
     line-height: 100px;
     color: #777;
@@ -74,7 +75,7 @@ const SignUp = () => {
       <input
         type="password"
         data-testid="password-input"
-        placeholder="비밀번호를 특수기호 제외 8자 이상 입력해주세요."
+        placeholder="비밀번호를 8자 이상 입력해주세요."
         id="password"
         onChange={(e) => {
           authBtn();

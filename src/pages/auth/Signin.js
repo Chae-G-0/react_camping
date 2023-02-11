@@ -8,6 +8,7 @@ const SignInBox = styled.div`
   display: flex;
   flex-direction: column;
   h2 {
+    text-align: center;
     font-size: 21px;
     line-height: 100px;
     color: #777;

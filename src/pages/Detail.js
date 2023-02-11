@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import "../Detail.scss";
+import "../style/Detail.scss";
 
 const NoImg = styled.div`
   flex: 1;

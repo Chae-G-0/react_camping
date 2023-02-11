@@ -1,15 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import "./App.scss";
+import "./style/App.scss";
 import Camp from "./component/Camp";
 import Header from "./component/Header";
 import Totop from "./component/Totop";
 import Detail from "./pages/Detail";
 import Main from "./pages/Main";
 import Region from "./pages/Region";
-import Signin from "./pages/Signin";
-import Signup from "./pages/Signup";
+import Signin from "./pages/auth/Signin";
+import Signup from "./pages/auth/Signup";
 import Thema from "./pages/Thema";
 
 function App() {
@@ -42,10 +42,13 @@ function App() {
             element={<Camp campingData={campingData} cityList={cityList} />}
           />
         </Route>
-        <Route path="/detail/:id" element={<Detail campingData={campingData} />} />
+        <Route
+          path="/detail/:id"
+          element={<Detail campingData={campingData} />}
+        />
         <Route path="/thema" element={<Thema campingData={campingData} />} />
-        <Route path="/signin" element={<Signin  />} />
-        <Route path="/signup" element={<Signup  />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
       <Totop />
     </div>
