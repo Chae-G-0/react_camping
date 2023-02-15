@@ -37,7 +37,6 @@ const Region = ({ campingData, cityList }) => {
           );
         })}
       </RegionList>
-      <Outlet />
       <Camp campingData={campingData} />
       <Totop />
     </div>

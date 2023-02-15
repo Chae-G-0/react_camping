@@ -18,7 +18,7 @@ const Camp = ({ campingData }) => {
   const filterDt = [...campingData].filter((it) => it.doNm === doNm);
   useEffect(() => {
     setLocate(filterDt);
-  }, [doNm, filterDt]);
+  }, [doNm]);
 
   return (
     <div>
@@ -42,10 +42,7 @@ const Camp = ({ campingData }) => {
             );
           })}
         </div>
-      )
-      
-      
-      }
+      )}
     </div>
   );
 };
