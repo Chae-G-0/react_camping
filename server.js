@@ -7,17 +7,14 @@ app.listen(8080, function () {
 });
 
 app.use(express.json());
-var cors = require("cors");
+var cors = require('cors');
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, "/react_camping/build")));
+app.use(express.static(path.join(__dirname, "react_camping/build")));
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "/react_camping/build/index.html"));
 });
-
-
-
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "/react_camping/build/index.html"));

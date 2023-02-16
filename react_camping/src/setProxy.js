@@ -4,6 +4,7 @@ module.exports = (app) => {
   app.use(
     proxy("/", {
       target: "http://localhost:8080/",
+      changeOrigin: true,
     })
   );
 };
