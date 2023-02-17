@@ -4,9 +4,12 @@ import styled from "styled-components";
 
 const SignUpBox = styled.div`
   width: 400px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   h2 {
     text-align: center;
     font-size: 21px;

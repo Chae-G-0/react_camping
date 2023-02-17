@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { FiUserPlus } from "react-icons/fi";
 import styled from "styled-components";
 
 const HeaderStyle = styled.header`
@@ -50,7 +51,7 @@ const Header = () => {
             <NavLink to="/signin">로그인</NavLink>
           </li>
           <li>
-            <NavLink to="/signup">회원가입</NavLink>
+            <NavLink to="/signup">{FiUserPlus}</NavLink>
           </li>
         </ul>
       </div>

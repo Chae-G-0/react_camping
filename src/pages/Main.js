@@ -1,9 +1,11 @@
 import React from "react";
+import "../style/main.scss"
 
 const Main = () => {
   return (
-    <main>
-      <div style={{ height: "1200px", background: "#f7f7f7" }}>main</div>
+    <main className="Main">
+      <section>MainVisual</section>
+      <section>MainContent</section>
     </main>
   );
 };
