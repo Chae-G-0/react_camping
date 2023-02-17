@@ -4,12 +4,12 @@ import styled from "styled-components";
 
 const HeaderStyle = styled.header`
   height: 100px;
-  margin: 0 auto;
   line-height: 100px;
   border-bottom: 1px solid #ddd;
 
   .container {
     width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
   }

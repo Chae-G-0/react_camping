@@ -3,48 +3,91 @@
     margin: 50px auto 0;
 
     .infoBox {
-        display: flex;
-        gap: 50px;
+        
+        .topBox{
+            display: flex;
+            gap: 50px;
+            margin: 0 0 50px 0;
 
-        figure {
-            flex: 1.5;
-            img {
-                border-radius: 15px;
-                margin: 0 0 15px 0;
+            figure {
+                flex: 1.5;
+                img {
+                    border-radius: 15px;
+                }
+            }
+    
+            .textBox {
+                flex: 1;
+    
+                h3 {
+                    font-size: 23px;
+                    font-weight: 700;
+                    margin: 5px 0 10px 0;
+                }
+    
+                span {
+                    display: block;
+                    font-size: 17px;
+                    font-weight: 500;
+                    line-height: 1.4;
+                    margin: 0 0 20px 0;
+                }
+
+                button {
+                    background: none;
+                    border: 1px solid #1e70c1;
+                    border-radius: 20px;
+                    padding: 10px 20px;
+                    align-items: center;
+                    cursor: pointer;
+
+                    &:hover {
+                        background: #1e70c1;
+                        color: #fff;
+                    }
+                }
+    
+                table {
+                    margin: 0 0 20px 0;
+                    border-top: 2px solid #1e70c1;
+                    width: 100%;
+                    border-spacing: 0;
+                    border-collapse: collapse;
+
+                    tr {
+                        border-bottom: 1px solid #ddd;
+
+                        th {
+                            padding: 10px 0;
+                            font-size: 15px;
+                            font-weight: 500;
+                        }
+
+                        td {
+                            padding: 10px 0 10px 25px;
+                            font-size: 15px;
+                            line-height: 1.2;
+                        }
+                    }
+                }
+    
             }
         }
 
-        .textBox {
-            flex: 2;
-            * {
-                margin: 5px 0 15px 0;
-            }
-
-            h3 {
-                font-size: 25px;
-                font-weight: 700;
-            }
-
-            span {
-                display: block;
+        .facInfo {
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            h4 {
                 font-size: 19px;
-                font-weight: 500;
-                line-height: 1.4;
+                font-weight: 700;
+                margin: 0 0 20px 0;
             }
 
             p {
                 font-size: 17px;
                 font-weight: 500;
-            }
-
-            .facInfo {
-                border: 1px solid #ddd;
-                border-radius: 15px;
-                padding: 15px;
-                h4 {
-                    font-size: 19px;
-                    font-weight: 700;
-                }
+                margin: 0 0 10px 0;
             }
         }
     }

@@ -22,9 +22,29 @@ const Camp = ({ campingData }) => {
 
   return (
     <div>
-      {locate && (
-        <div className="container">
+      {doNm ? (
+        <div className="camp">
           {[...locate].map((it, idx) => {
+            return (
+              <div className="campBox" key={idx}>
+                <Link to={`/detail/${it.contentId}`}>
+                  <figure>
+                    {it.firstImageUrl.length > 1 ? (
+                      <img src={it.firstImageUrl} alt="" />
+                    ) : (
+                      <NoImg>등록된 사진이 없습니다.</NoImg>
+                    )}
+                  </figure>
+                  <h3>{it.facltNm}</h3>
+                  <p>{it.addr1}</p>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="camp">
+          {[...campingData].map((it, idx) => {
             return (
               <div className="campBox" key={idx}>
                 <Link to={`/detail/${it.contentId}`}>
