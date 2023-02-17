@@ -23,7 +23,7 @@ const Detail = ({ campingData }) => {
   );
   useEffect(() => {
     setDetailInfo(detail);
-  }, [detail]);
+  }, [id]);
   return (
     <div className="Detail">
       {detailInfo.map((it) => {
@@ -64,4 +64,4 @@ const Detail = ({ campingData }) => {
   );
 };
 
-export default Detail;
+export default React.memo(Detail);

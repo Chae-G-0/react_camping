@@ -43,4 +43,4 @@ const Region = ({ campingData, cityList }) => {
   );
 };
 
-export default Region;
+export default React.memo(Region);

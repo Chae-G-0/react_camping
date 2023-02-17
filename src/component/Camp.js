@@ -47,4 +47,4 @@ const Camp = ({ campingData }) => {
   );
 };
 
-export default Camp;
+export default React.memo(Camp);
