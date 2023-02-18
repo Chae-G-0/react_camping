@@ -4,8 +4,14 @@ import "../style/main.scss"
 const Main = () => {
   return (
     <main className="Main">
-      <section>MainVisual</section>
-      <section>MainContent</section>
+      <section className="mainVisual">
+        mainvisual
+      </section>
+      <section className="mainComtent">
+        <div className="inner">
+          maincomtent
+        </div>
+      </section>
     </main>
   );
 };

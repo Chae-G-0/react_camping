@@ -15,13 +15,20 @@ const HeaderStyle = styled.header`
     justify-content: space-between;
   }
   h1 {
-    font-size: 30px;
+    flex: 1;
+    text-align: center;
+    font-size: 27px;
     font-weight: 700;
   }
-  ul {
+  .gnb {
+    flex: 1;
     display: flex;
     gap: 30px;
-    font-size: 19px;
+    font-size: 17px;
+  }
+  .auth {
+    flex: 1;
+    text-align: end;
   }
 `;
 
@@ -29,9 +36,6 @@ const Header = () => {
   return (
     <HeaderStyle className="Header">
       <div className="container">
-        <h1>
-          <NavLink to="/">Go Camping</NavLink>
-        </h1>
         <ul className="gnb">
           <li>
             <NavLink to="/region">지역별</NavLink>
@@ -40,18 +44,18 @@ const Header = () => {
             <NavLink to="/thema">테마별</NavLink>
           </li>
           <li>
-            <NavLink>공지시항</NavLink>
+            <NavLink to="/notice">공지시항</NavLink>
           </li>
           <li>
             <NavLink>문의사항</NavLink>
           </li>
         </ul>
-        <ul>
+        <h1>
+          <NavLink to="/">Camping</NavLink>
+        </h1>
+        <ul className="auth">
           <li>
-            <NavLink to="/signin">로그인</NavLink>
-          </li>
-          <li>
-            <NavLink to="/signup">{FiUserPlus}</NavLink>
+            <NavLink to="/signin">{FiUserPlus}</NavLink>
           </li>
         </ul>
       </div>

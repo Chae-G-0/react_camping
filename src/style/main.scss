@@ -1,9 +1,12 @@
 .Main {
-    width: 1200px;
-    margin: 0 auto;
 
     section {
         padding: 100px 0;
         background: #ddd;
+        
+        .inner {
+            width: 1200px;
+            margin: 0 auto;
+        }
     }
 }

@@ -11,6 +11,7 @@ import Region from "./pages/Region";
 import Signin from "./pages/auth/Signin";
 import Signup from "./pages/auth/Signup";
 import Thema from "./pages/Thema";
+import Notice from "./pages/Notice";
 
 function App() {
   const [campingData, setCampingData] = useState([]);
@@ -46,6 +47,7 @@ function App() {
           element={<Detail campingData={campingData} />}
         />
         <Route path="/thema" element={<Thema campingData={campingData} />} />
+        <Route path="/notice" element={<Notice />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
