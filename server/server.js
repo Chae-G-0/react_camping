@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const mongoose = require("mongoose");
+const { PORT } = process.env;
 
 // const MongoClient = require("mongodb").MongoClient;
 
@@ -35,10 +36,9 @@ mongoose
   .connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useMongoClient: true,
   })
   .then(() => {
-    app.listen(8080, function () {
+    app.listen(PORT, function () {
       console.log("listening on 8080");
     });
   })
