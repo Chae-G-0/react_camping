@@ -7,6 +7,10 @@ const SignInBox = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   h2 {
     text-align: center;
     font-size: 21px;
@@ -58,7 +62,7 @@ const SignIn = () => {
   };
   return (
     <SignInBox>
-      <h2>로그인 페이지 입니다.</h2>
+      <h2>로그인 페이지</h2>
       <label htmlFor="id">아이디</label>
       <input
         ref={idInput}

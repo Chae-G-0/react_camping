@@ -1,6 +1,7 @@
 .Detail{
     width: 1200px;
-    margin: 50px auto 0;
+    padding: 50px 0;
+    margin: 0 auto;
 
     .infoBox {
         
@@ -30,26 +31,26 @@
                     font-size: 17px;
                     font-weight: 500;
                     line-height: 1.4;
-                    margin: 0 0 20px 0;
+                    margin: 0 0 15px 0;
                 }
 
                 button {
                     background: none;
-                    border: 1px solid #1e70c1;
+                    border: 1px solid #333;
                     border-radius: 20px;
                     padding: 10px 20px;
                     align-items: center;
                     cursor: pointer;
 
                     &:hover {
-                        background: #1e70c1;
+                        background: #333;
                         color: #fff;
                     }
                 }
     
                 table {
                     margin: 0 0 20px 0;
-                    border-top: 2px solid #1e70c1;
+                    border-top: 2px solid #2BAE66;
                     width: 100%;
                     border-spacing: 0;
                     border-collapse: collapse;
@@ -67,6 +68,12 @@
                             padding: 10px 0 10px 25px;
                             font-size: 15px;
                             line-height: 1.2;
+
+                            a {
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
                         }
                     }
                 }

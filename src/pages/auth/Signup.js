@@ -62,7 +62,7 @@ const SignUp = () => {
   }, [signUpForm]);
   return (
     <SignUpBox>
-      <h2>회원가입 페이지 입니다.</h2>
+      <h2>회원가입 페이지</h2>
       <label htmlFor="email">아이디</label>
       <input
         type="email"

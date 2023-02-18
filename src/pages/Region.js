@@ -12,11 +12,21 @@ const RegionList = styled.ul`
   font-size: 17px;
   font-weight: 500;
   li {
-    border: 1px solid #777;
-    padding 5px 10px;
-    border-radius: 15px; 
-    :hover {
-      background: #777;
+    a {
+      border: 1px solid #333;
+      padding 5px 10px;
+      border-radius: 15px;
+      color: #333;
+      background: #fff;
+
+      :hover {
+        background: #333;
+        color: #fff;
+      }
+    }
+    
+    .active {
+      background: #333;
       color: #fff;
     }
   }
