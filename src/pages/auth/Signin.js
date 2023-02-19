@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -49,6 +50,14 @@ const SignIn = () => {
       [e.target.id]: e.target.value,
     });
   };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const userInfo = {
+      id: loginForm.id,
+      password: loginForm.password,
+    }
+    axios.post('/signin', userInfo)
+  }
   const handleSubmit = () => {
     if (loginForm.id.length < 1) {
       idInput.current.focus();
@@ -58,6 +67,7 @@ const SignIn = () => {
       pwInput.current.focus();
       return;
     }
+    handleLogin();
     navigate("/");
   };
   return (
@@ -65,10 +75,9 @@ const SignIn = () => {
       <h2>로그인 페이지</h2>
       <label htmlFor="id">아이디</label>
       <input
-        ref={idInput}
-        data-testid="email-input"
-        placeholder="아이디를 입력해 주세요."
         id="id"
+        ref={idInput}
+        placeholder="이메일를 입력해 주세요."
         onChange={(e) => {
           handleLogInState(e);
           console.log();
@@ -76,17 +85,15 @@ const SignIn = () => {
       />
       <label htmlFor="password">비밀번호</label>
       <input
+        id="password"
         ref={pwInput}
         type="password"
-        data-testid="password-input"
         placeholder="비밀번호를 입력해주세요."
-        id="password"
         onChange={(e) => {
           handleLogInState(e);
         }}
       />
       <button
-        data-testid="signup-button"
         onClick={() => {
           handleSubmit();
         }}

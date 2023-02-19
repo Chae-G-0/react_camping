@@ -9,7 +9,7 @@ const Btn = styled.div`
   bottom: 100px;
   right: 100px;
   color: #fff;
-  background: green;
+  background: #333;
   font-size: 30px;
   padding: 10px;
   border-radius: 50%;

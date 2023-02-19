@@ -2,30 +2,12 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const app = express();
+const bodyParser = require("body-parser");
+const router = require("router")
 const mongoose = require("mongoose");
-const { PORT } = process.env;
 
-// const MongoClient = require("mongodb").MongoClient;
-
-// let db;
-// MongoClient.connect(
-//   process.env.REACT_APP_DB_URL,
-//   { useUnifiedTopology: true },
-//   function (error, client) {
-//     if (error) return console.group(error);
-//     db = client.db("camp_data");
-//     db.collection("user").insertOne(
-//       { id: email, pw: password },
-//       function (error, result) {
-//         console.log("저장 완료");
-//       }
-//     );
-//     app.listen(8080, function () {
-//       console.log("listening on 8080");
-//     });
-//   }
-// );
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.json());
 const cors = require("cors");
 app.use(cors());
@@ -33,23 +15,29 @@ app.use(cors());
 mongoose.set("strictQuery", false);
 
 mongoose
-  .connect(process.env.DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://gy1024:rkdud4020@cluster0.oemqahq.mongodb.net/camp_data?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
-    app.listen(PORT, function () {
+    app.listen(8080, function () {
       console.log("listening on 8080");
     });
   })
   .catch((err) => console.log(err));
 
-app.use(express.static(path.join(__dirname, "/build")));
+app.use(express.static(path.join(__dirname, "../build")));
 
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "/build/index.html"));
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
+app.post("/signup", router);
+app.post("/signin", router);
+
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "/build/index.html"));
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });

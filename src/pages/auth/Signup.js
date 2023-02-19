@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -37,6 +38,7 @@ const SignUpBox = styled.div`
 const SignUp = () => {
   const navigate = useNavigate();
   const [signUpForm, setSignUpForm] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -52,6 +54,18 @@ const SignUp = () => {
       [e.target.id]: e.target.value,
     });
   };
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    const userInfo = {
+      name: signUpForm.name,
+      email: signUpForm.email,
+      password: signUpForm.password,
+    };
+    axios.post("/signup", userInfo);
+    navigate("/signin");
+  };
+
   const authBtn = () => {
     regx.test(signUpForm.email) && signUpForm.password.length >= 8
       ? setBtnDisabled(false)
@@ -63,10 +77,17 @@ const SignUp = () => {
   return (
     <SignUpBox>
       <h2>회원가입 페이지</h2>
+      <label htmlFor="name">닉네임</label>
+      <input
+        placeholder="닉네임 입력해 주세요."
+        id="name"
+        onChange={(e) => {
+          authBtn();
+          handleSignUpState(e);
+        }}
+      />
       <label htmlFor="email">아이디</label>
       <input
-        type="email"
-        data-testid="email-input"
         placeholder="이메일을 입력해 주세요."
         id="email"
         onChange={(e) => {
@@ -77,7 +98,6 @@ const SignUp = () => {
       <label htmlFor="password">비밀번호</label>
       <input
         type="password"
-        data-testid="password-input"
         placeholder="비밀번호를 8자 이상 입력해주세요."
         id="password"
         onChange={(e) => {
@@ -87,10 +107,9 @@ const SignUp = () => {
       />
       <button
         type="submit"
-        data-testid="signup-button"
         disabled={btnDisabled}
-        onClick={() => {
-          navigate("/signin");
+        onClick={(e) => {
+          handleSignup(e);
         }}
       >
         회원가입
