@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 const mongoose = require("mongoose");
 
 mongoose
@@ -40,9 +38,7 @@ const boardSchema = new mongoose.Schema({
   content: String,
 });
 
-userSchema.methods.comparePassword = function (plainPw, cb) {};
-
-const User = mongoose.model("User", userSchema);
-const Board = mongoose.model("Board", boardSchema);
+const User = mongoose.model("User", userSchema, "User");
+const Board = mongoose.model("Board", boardSchema, "Borad");
 
 module.exports = { User, Board };

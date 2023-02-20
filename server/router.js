@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto")
-const { User } = require("user");
+const { User } = require("./user");
 
 const createJWT = () => {
   const secretKey = "secretkey";
@@ -35,16 +35,16 @@ router.post("/signin", (req, res) => {
         message: "이메일에 해당하는 회원이 존재하지 않습니다.",
       });
     }
-    user.comparePassword(req.body.password, (err, isMatch) => {
-      if (!isMatch) {
-        return res.json({
-          loginSuccess: false,
-          message: "비밀번호가 틀렸습니다.",
-        });
-      }
-      user.generateToken((err, user) => {
-        if (err) return res.status(400).send(err);
-      });
-    });
   });
 });
+
+router.post("/verify", (req, res) => {
+  const token = req.headers['authorization']
+  jwt.verify(token, "secretkey", (err, decoded) => {
+    if (err) {
+      
+    }
+  });
+})
+
+module.exports = router;
