@@ -47,7 +47,7 @@ const Header = () => {
             <NavLink to="/notice">공지시항</NavLink>
           </li>
           <li>
-            <NavLink>문의사항</NavLink>
+            <NavLink to="/board">게시판</NavLink>
           </li>
         </ul>
         <h1>
