@@ -10,7 +10,7 @@ const Notice = () => {
       <div className="inner">
         <h2>공지사항</h2>
         <table>
-          <tbody>
+          <thead>
             <tr>
               <th>번호</th>
               <th>제목</th>
@@ -18,6 +18,8 @@ const Notice = () => {
               <th>작성일자</th>
               <th>조희수</th>
             </tr>
+          </thead>
+          <tbody>
             {notice.map((it) => {
               return (
                 <tr key={it.id}>

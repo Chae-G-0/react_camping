@@ -1,16 +1,30 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../../style/board.scss";
 
 const BDList = () => {
   return (
-    <div className="BDList">
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-      </ul>
+    <div className="BoardList">
+      <table>
+        <thead>
+          <tr>
+            <th className="no">번호</th>
+            <th className="tit">제목</th>
+            <th className="name">작성자</th>
+            <th className="date">날짜</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="no">1</td>
+            <td className="tit">
+              <Link to="">제목</Link>
+            </td>
+            <td className="name">작성자</td>
+            <td className="date">날짜</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };
