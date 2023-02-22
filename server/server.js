@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
-const router = require("./router")
+const router = require("./router");
 const mongoose = require("mongoose");
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,8 +35,13 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
+app.get("/test", (req, res) => {
+  res.send("된나?");
+});
+
 app.post("/signup", router);
 app.post("/signin", router);
+app.post("/verify", router);
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "../build/index.html"));

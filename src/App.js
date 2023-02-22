@@ -30,6 +30,12 @@ function App() {
       setCityList(doList);
     });
   }, []);
+
+  useEffect(() => {
+    axios.get("/test").then((response) => {
+      console.log(response);
+    });
+  }, []);
   return (
     <div className="App">
       <Header />

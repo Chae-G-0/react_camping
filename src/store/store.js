@@ -56,6 +56,10 @@ const NOTICE = createSlice({
   ],
 });
 
+const BOARD = createSlice({
+  name: "BOARD",
+})
+
 export default configureStore({
   reducer: {
     NOTICE: NOTICE.reducer,
