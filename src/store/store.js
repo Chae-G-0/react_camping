@@ -1,4 +1,6 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore, createSlice, combineReducers } from "@reduxjs/toolkit";
+import loginSlice from "./loginSlice"
+
 
 const NOTICE = createSlice({
   name: "NOTICE",
@@ -56,9 +58,9 @@ const NOTICE = createSlice({
   ],
 });
 
-const BOARD = createSlice({
-  name: "BOARD",
-})
+const reducers = combineReducers({
+  login: loginSlice,
+});
 
 export default configureStore({
   reducer: {

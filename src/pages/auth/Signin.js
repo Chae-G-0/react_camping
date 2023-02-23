@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -37,6 +38,8 @@ const SignInBox = styled.div`
 `;
 
 const SignIn = () => {
+  const dispatch = useDispatch();
+  const isLoginState = useSelector((state) => state.isLoginState);
   const idInput = useRef();
   const pwInput = useRef();
   const navigate = useNavigate();
@@ -55,9 +58,9 @@ const SignIn = () => {
     const userInfo = {
       id: loginForm.id,
       password: loginForm.password,
-    }
-    axios.post('/signin', userInfo)
-  }
+    };
+    axios.post("/signin", userInfo);
+  };
   const handleSubmit = () => {
     if (loginForm.id.length < 1) {
       idInput.current.focus();
