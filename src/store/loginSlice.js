@@ -8,18 +8,49 @@ const initialState = {
   isLoginState: false,
 };
 
+const authData = createAsyncThunk("loginSlice/LOGIN", async (userState) => {
+  const result = await axios.post(
+    "/verify",
+    {},
+    {
+      headers: {
+        Authorization: userState,
+      },
+    }
+  );
+  if (result.data.ACCESS_TOKEN) {
+    return Object.values(result.data);
+  } else {
+    return Object.apply(result.data);
+  }
+});
+
 const loginSlice = createSlice({
   name: "loginSlice",
   initialState,
   reducers: {
-    LOG_IN: (isLoginState, action) => {
-      return { ...isLoginState, ...action.payload };
+    LOGIN: (state, action) => {
+      state.isLoginState = true;
     },
+    CLEAR: (state, action) => {
+      state.isLoginState = false;
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(authData.pending, (state, action) => {
+      return state;
+    });
+    builder.addCase(authData.fulfilled, (state, action) => {
+      state.isLoginState = action.payload;
+    });
+    builder.addCase(authData.rejected, (state, action) => {
+      return state;
+    });
   },
 });
 
 export const signUpAsync = createAsyncThunk(
-  "/signup",
+  "/signUpAsync",
   async (signupInfo, { rejectWithValue }) => {
     try {
       const response = await axios.post("/signup", {
@@ -34,5 +65,5 @@ export const signUpAsync = createAsyncThunk(
   }
 );
 
-export const { LOG_IN } = loginSlice.reducer;
+export const { LOGIN } = loginSlice.reducer;
 export default loginSlice.reducer;

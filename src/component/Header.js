@@ -57,6 +57,9 @@ const Header = () => {
           <li>
             <NavLink to="/signin">{FiUserPlus}</NavLink>
           </li>
+          {/* <li>
+            <NavLink to="/mypage">마이페이지</NavLink>
+          </li> */}
         </ul>
       </div>
     </HeaderStyle>

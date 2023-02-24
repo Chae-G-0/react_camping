@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../style/board.scss";
 
 const Write = () => {
+  const titleInput = useRef();
+  const contentInput = useRef();
   const navigate = useNavigate();
+  const [boardForm, setBoardForm] = useState({
+    title: "",
+    content: "",
+  });
+
+  const handleBoardState = (e) => {
+    setBoardForm({
+      ...boardForm,
+      [e.target.name]: e.target.value,
+    });
+  };
+  
   return (
     <section className="Write">
       <div className="inner BoardList">
@@ -20,13 +34,25 @@ const Write = () => {
             <tr>
               <td>제목</td>
               <td>
-                <input name="title" />
+                <input
+                  name="title"
+                  ref={titleInput}
+                  onChange={(e) => {
+                    handleBoardState(e);
+                  }}
+                />
               </td>
             </tr>
             <tr>
               <td>내용</td>
               <td>
-                <textarea name="content" />
+                <textarea
+                  name="content"
+                  ref={contentInput}
+                  onChange={(e) => {
+                    handleBoardState(e);
+                  }}
+                />
               </td>
             </tr>
           </tbody>

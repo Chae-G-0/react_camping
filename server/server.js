@@ -36,10 +36,6 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
-app.get("/test", (req, res) => {
-  res.send("된나?");
-});
-
 app.post("/signup", router);
 app.post("/signin", router);
 app.post("/verify", router);

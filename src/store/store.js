@@ -1,7 +1,6 @@
 import { configureStore, createSlice, combineReducers } from "@reduxjs/toolkit";
 import loginSlice from "./loginSlice"
 
-
 const NOTICE = createSlice({
   name: "NOTICE",
   initialState: [

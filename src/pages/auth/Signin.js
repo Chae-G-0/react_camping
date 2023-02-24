@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
+import authData from "../../store/loginSlice"
 const SignInBox = styled.div`
   width: 400px;
   margin: 0 auto;
@@ -39,7 +39,7 @@ const SignInBox = styled.div`
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const isLoginState = useSelector((state) => state.isLoginState);
+  // const isLoginState = useSelector((state) => state.login.isLoginState);
   const idInput = useRef();
   const pwInput = useRef();
   const navigate = useNavigate();
@@ -59,7 +59,16 @@ const SignIn = () => {
       id: loginForm.id,
       password: loginForm.password,
     };
-    axios.post("/signin", userInfo);
+    try {
+      const result = axios
+        .post("/signin", userInfo)
+        .catch((err) => console.log(err.response.data));
+      localStorage.setItem('userState', result.data.ACCESS_TOKEN);
+      dispatch(authData(result.data.ACCESS_TOKEN));
+      
+    } catch (err) {
+      return console.log(err);
+    }
   };
   const handleSubmit = () => {
     if (loginForm.id.length < 1) {

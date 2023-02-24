@@ -14,6 +14,7 @@ import Thema from "./pages/Thema";
 import Notice from "./pages/Notice";
 import Board from "./pages/Board/Board";
 import Write from "./pages/Board/Write";
+import Mypage from "./pages/Mypage";
 
 function App() {
   const [campingData, setCampingData] = useState([]);
@@ -31,11 +32,6 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    axios.get("/test").then((response) => {
-      console.log(response);
-    });
-  }, []);
   return (
     <div className="App">
       <Header />
@@ -60,6 +56,7 @@ function App() {
         <Route path="/write" element={<Write />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/mypage" element={<Mypage />} />
       </Routes>
       <Totop />
     </div>
