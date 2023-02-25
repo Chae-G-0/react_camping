@@ -62,7 +62,7 @@ const SignUp = () => {
       email: signUpForm.email,
       password: signUpForm.password,
     };
-    axios.post("/signup", userInfo);
+    axios.post("/api/signup", userInfo);
     navigate("/signin");
   };
 

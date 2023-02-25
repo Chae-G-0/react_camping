@@ -57,12 +57,9 @@ const NOTICE = createSlice({
   ],
 });
 
-const reducers = combineReducers({
-  login: loginSlice,
-});
-
 export default configureStore({
   reducer: {
     NOTICE: NOTICE.reducer,
+    login: loginSlice,
   },
 });

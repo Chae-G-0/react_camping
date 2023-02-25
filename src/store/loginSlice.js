@@ -1,13 +1,6 @@
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 const { default: axios } = require("axios");
 
-const initialState = {
-  name: "",
-  email: "",
-  password: "",
-  isLoginState: false,
-};
-
 const authData = createAsyncThunk("loginSlice/LOGIN", async (userState) => {
   const result = await axios.post(
     "/verify",
@@ -27,13 +20,18 @@ const authData = createAsyncThunk("loginSlice/LOGIN", async (userState) => {
 
 const loginSlice = createSlice({
   name: "loginSlice",
-  initialState,
+  initialState: {
+    name: "",
+    email: "",
+    password: "",
+    isLoginState: true,
+  },
   reducers: {
     LOGIN: (state, action) => {
-      state.isLoginState = true;
+      state.isLoginState = action.payload;
     },
-    CLEAR: (state, action) => {
-      state.isLoginState = false;
+    LOGOUT: (state, action) => {
+      state.isLoginState = action.payload;
     },
   },
   extraReducers: (builder) => {

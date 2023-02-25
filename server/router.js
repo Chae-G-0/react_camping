@@ -10,7 +10,7 @@ const createJWT = () => {
     {
       token_type: "access",
       email: email,
-      name: nane,
+      name: name,
     },
     secretKey,
     {

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { FiUserPlus } from "react-icons/fi";
 import styled from "styled-components";
 
 const HeaderStyle = styled.header`
@@ -30,9 +30,27 @@ const HeaderStyle = styled.header`
     flex: 1;
     text-align: end;
   }
+  .isLogin {
+    display: flex;
+    gap: 30px;
+    flex: 1;
+    justify-content: flex-end;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 100px;
+    }
+  }
 `;
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const LOGIN = useSelector((state) => state.login.isLoginState);
+  // const LOGOUT = useSelector((state) => state.login.isLoginState);
+  console.log(LOGIN);
+
   return (
     <HeaderStyle className="Header">
       <div className="container">
@@ -53,14 +71,22 @@ const Header = () => {
         <h1>
           <NavLink to="/">Camping</NavLink>
         </h1>
-        <ul className="auth">
-          <li>
-            <NavLink to="/signin">{FiUserPlus}</NavLink>
-          </li>
-          {/* <li>
-            <NavLink to="/mypage">마이페이지</NavLink>
-          </li> */}
-        </ul>
+        {LOGIN ? (
+          <ul className="isLogin">
+            <li>
+              <NavLink to="/mypage">마이페이지</NavLink>
+            </li>
+            <li>
+              <button onClick={() => { }}>로그아웃</button>
+            </li>
+          </ul>
+        ) : (
+          <ul className="auth">
+            <li>
+              <NavLink to="/signin">로그인</NavLink>
+            </li>
+          </ul>
+        )}
       </div>
     </HeaderStyle>
   );
