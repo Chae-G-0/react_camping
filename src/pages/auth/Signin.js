@@ -65,7 +65,7 @@ const SignIn = () => {
         .catch((err) => console.log(err.response.data));
       localStorage.setItem("userState", result.data.ACCESS_TOKEN);
       dispatch(authData(result.data.ACCESS_TOKEN));
-      dispatch(LOGIN(true))
+      dispatch(LOGIN())
       console.log("login!!!");
     } catch (err) {
       return console.log(err);

@@ -28,10 +28,10 @@ const loginSlice = createSlice({
   },
   reducers: {
     LOGIN: (state, action) => {
-      state.isLoginState = action.payload;
+      state.isLoginState = true;
     },
     LOGOUT: (state, action) => {
-      state.isLoginState = action.payload;
+      state.isLoginState = false;
     },
   },
   extraReducers: (builder) => {
@@ -63,5 +63,6 @@ export const signUpAsync = createAsyncThunk(
   }
 );
 
-export const { LOGIN } = loginSlice.reducer;
+export const { LOGIN, LOGOUT } = loginSlice.reducer;
 export default loginSlice.reducer;
+export { authData };

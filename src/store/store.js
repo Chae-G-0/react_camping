@@ -61,5 +61,6 @@ export default configureStore({
   reducer: {
     NOTICE: NOTICE.reducer,
     login: loginSlice,
+    logout: loginSlice,
   },
 });

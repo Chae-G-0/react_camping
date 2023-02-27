@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { LOGIN, LOGOUT } from "../store/loginSlice";
 
 const HeaderStyle = styled.header`
   height: 100px;
@@ -47,9 +48,14 @@ const HeaderStyle = styled.header`
 
 const Header = () => {
   const dispatch = useDispatch();
-  const LOGIN = useSelector((state) => state.login.isLoginState);
-  // const LOGOUT = useSelector((state) => state.login.isLoginState);
-  console.log(LOGIN);
+  const isLoginState = useSelector((state) => state.login.isLoginState);
+  const LOGOUT = useSelector((state) => state.logout.isLoginState);
+
+  const handlelogout = () => {
+    localStorage.removeItem("access_token")
+    dispatch(LOGOUT())
+    alert("로그아웃 되었습니다.")
+  }
 
   return (
     <HeaderStyle className="Header">
@@ -77,7 +83,13 @@ const Header = () => {
               <NavLink to="/mypage">마이페이지</NavLink>
             </li>
             <li>
-              <button onClick={() => { }}>로그아웃</button>
+              <button
+                onClick={() => {
+                  handlelogout();
+                }}
+              >
+                로그아웃
+              </button>
             </li>
           </ul>
         ) : (
