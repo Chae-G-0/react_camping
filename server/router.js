@@ -6,7 +6,7 @@ const { User } = require("./user");
 
 const createJWT = () => {
   const secretKey = "secretkey";
-  const token = jwt.sign(
+  const accessToken = jwt.sign(
     {
       token_type: "access",
       email: email,
@@ -15,10 +15,11 @@ const createJWT = () => {
     secretKey,
     {
       issuer: "issuer",
-      expiresIn: "10m",
+      expiresIn: "5m",
       subject: "access",
     }
   );
+  return accessToken;
 };
 
 router.post("/signup", async (req, res) => {
@@ -38,24 +39,25 @@ router.post("/signin", (req, res) => {
       .update(req.body.password)
       .digest("base64"),
   };
-  let signupAuth = Object.assign(email, password)
-  User.findOne((email).then((result) => {
-    if (result === null) {
-      alert("아이디 불일치")
-    } else {
-      User.findOne(signupAuth)
-        .then((result) => {
+  let signupAuth = Object.assign(email, password);
+  User.findOne(
+    email.then((result) => {
+      if (result === null) {
+        alert("아이디 불일치");
+      } else {
+        User.findOne(signupAuth).then((result) => {
           if (result === null) {
-            alert("비밀번호 불일치")
+            alert("비밀번호 불일치");
           } else {
-            const token = createJWT(req.body.email, result.email)
+            const token = createJWT(req.body.email, result.email);
             res.send({
               ACCESS_TOKEN: token,
-            })
+            });
           }
-      })
-    }
-  }));
+        });
+      }
+    })
+  );
 });
 
 router.post("/verify", (req, res) => {

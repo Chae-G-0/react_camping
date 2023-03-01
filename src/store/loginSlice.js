@@ -18,19 +18,21 @@ const authData = createAsyncThunk("loginSlice/LOGIN", async (userState) => {
   }
 });
 
+const initialState = {
+  name: "",
+  email: "",
+  password: "",
+  isLoginState: false,
+};
+
 const loginSlice = createSlice({
   name: "loginSlice",
-  initialState: {
-    name: "",
-    email: "",
-    password: "",
-    isLoginState: true,
-  },
+  initialState,
   reducers: {
-    LOGIN: (state, action) => {
+    LOGIN: (state) => {
       state.isLoginState = true;
     },
-    LOGOUT: (state, action) => {
+    LOGOUT: (state) => {
       state.isLoginState = false;
     },
   },
@@ -63,6 +65,6 @@ export const signUpAsync = createAsyncThunk(
   }
 );
 
-export const { LOGIN, LOGOUT } = loginSlice.reducer;
+export const { LOGIN, LOGOUT } = loginSlice.actions;
 export default loginSlice.reducer;
 export { authData };

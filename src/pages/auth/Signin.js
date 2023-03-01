@@ -53,6 +53,19 @@ const SignIn = () => {
       [e.target.id]: e.target.value,
     });
   };
+
+  const handleSubmit = () => {
+    if (loginForm.id.length < 1) {
+      idInput.current.focus();
+      return;
+    }
+    if (loginForm.password.length < 8) {
+      pwInput.current.focus();
+      return;
+    }
+    navigate("/", {replace: true});
+  };
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     const userInfo = {
@@ -63,26 +76,16 @@ const SignIn = () => {
       const result = axios
         .post("/signin", userInfo)
         .catch((err) => console.log(err.response.data));
-      localStorage.setItem("userState", result.data.ACCESS_TOKEN);
+      localStorage.setItem("access_token", result.data.ACCESS_TOKEN);
       dispatch(authData(result.data.ACCESS_TOKEN));
-      dispatch(LOGIN())
+      dispatch(LOGIN());
+      handleSubmit();
       console.log("login!!!");
     } catch (err) {
       return console.log(err);
     }
   };
-  const handleSubmit = () => {
-    if (loginForm.id.length < 1) {
-      idInput.current.focus();
-      return;
-    }
-    if (loginForm.password.length < 8) {
-      pwInput.current.focus();
-      return;
-    }
-    handleLogin();
-    navigate("/");
-  };
+
   return (
     <SignInBox>
       <h2>로그인 페이지</h2>
@@ -107,8 +110,8 @@ const SignIn = () => {
         }}
       />
       <button
-        onClick={() => {
-          handleSubmit();
+        onClick={(e) => {
+          handleLogin(e);
         }}
       >
         로그인

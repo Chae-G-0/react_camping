@@ -62,8 +62,17 @@ const SignUp = () => {
       email: signUpForm.email,
       password: signUpForm.password,
     };
-    axios.post("/signup", userInfo);
-    navigate("/signin");
+    try {
+      axios.post("http://localhost:8080/signup", userInfo);
+      alert("회원가입이 완료되었습니다.");
+      navigate("/signin", { replace: true });
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        alert("이미 사용중인 이메일입니다.");
+        signUpForm.email("");
+        return;
+      }
+    }
   };
 
   const authBtn = () => {

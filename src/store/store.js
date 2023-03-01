@@ -1,4 +1,4 @@
-import { configureStore, createSlice, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 import loginSlice from "./loginSlice"
 
 const NOTICE = createSlice({
