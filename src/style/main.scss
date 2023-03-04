@@ -1,12 +1,32 @@
 .Main {
 
     section {
-        padding: 100px 0;
-        background: #ddd;
         
         .inner {
             width: 1200px;
             margin: 0 auto;
+        }
+    }
+    
+    .MainVisual {
+        padding: 0;
+        
+        figure {
+            position: relative;
+            height: 750px;
+            background-position: bottom center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .item01 {
+            background-image: url(../../public/assets/MainVisual01.jpg);
+        }
+    
+        @for $i from 1 through 5 {
+            .item0#{$i} {
+                background-image: url(../../public/assets/MainVisual0#{$i}.jpg);
+            }
         }
     }
 }

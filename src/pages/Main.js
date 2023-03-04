@@ -1,16 +1,13 @@
 import React from "react";
-import "../style/main.scss"
+import "../style/main.scss";
+import MainVisual from "./MainVisual";
 
 const Main = () => {
   return (
     <main className="Main">
-      <section className="mainVisual">
-        mainvisual
-      </section>
+      <MainVisual />
       <section className="mainComtent">
-        <div className="inner">
-          maincomtent
-        </div>
+        <div className="inner">maincomtent</div>
       </section>
     </main>
   );
