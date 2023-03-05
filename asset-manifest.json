@@ -1,13 +1,18 @@
 {
   "files": {
-    "main.css": "/react_camping/static/css/main.19306630.css",
-    "main.js": "/react_camping/static/js/main.120d21b3.js",
+    "main.css": "/react_camping/static/css/main.a56fb88d.css",
+    "main.js": "/react_camping/static/js/main.bc022b8e.js",
+    "static/media/MainVisual03.jpg": "/react_camping/static/media/MainVisual03.534fac00865cd92d98a9.jpg",
+    "static/media/MainVisual01.jpg": "/react_camping/static/media/MainVisual01.477eed476ba2b4141cc0.jpg",
+    "static/media/MainVisual04.jpg": "/react_camping/static/media/MainVisual04.63f59d58f03e5ddfa904.jpg",
+    "static/media/MainVisual02.jpg": "/react_camping/static/media/MainVisual02.92e8c6ce2a9042fcd73b.jpg",
+    "static/media/axios.cjs": "/react_camping/static/media/axios.41b3b7c637793f9462e0.cjs",
     "index.html": "/react_camping/index.html",
-    "main.19306630.css.map": "/react_camping/static/css/main.19306630.css.map",
-    "main.120d21b3.js.map": "/react_camping/static/js/main.120d21b3.js.map"
+    "main.a56fb88d.css.map": "/react_camping/static/css/main.a56fb88d.css.map",
+    "main.bc022b8e.js.map": "/react_camping/static/js/main.bc022b8e.js.map"
   },
   "entrypoints": [
-    "static/css/main.19306630.css",
-    "static/js/main.120d21b3.js"
+    "static/css/main.a56fb88d.css",
+    "static/js/main.bc022b8e.js"
   ]
 }
