@@ -19,11 +19,20 @@
             background-size: cover;
         }
 
-        .item01 {
-            background-image: url(../../public/assets/MainVisual01.jpg);
+        .inner {
+            h2 {
+                text-align: left;
+                position: absolute;
+                top: 50%;
+                left: 25%;
+                transform: translate(-50%, -50%);
+                font-size: 40px;
+                font-weight: 700;
+                color: #ddd;
+            }
         }
-    
-        @for $i from 1 through 5 {
+
+        @for $i from 1 through 4 {
             .item0#{$i} {
                 background-image: url(../../public/assets/MainVisual0#{$i}.jpg);
             }

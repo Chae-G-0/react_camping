@@ -7,8 +7,7 @@ const SLIDER = [
   { id: 1, content: "camping" },
   { id: 2, content: "지역별 캠핑장 검색" },
   { id: 3, content: "테마별 캠핑장 검색" },
-  { id: 4, content: "캠핑장 정보 알아보기" },
-  { id: 5, content: "디테일 정보 알아보기" },
+  { id: 4, content: "테마별 캠핑장 검색" },
 ];
 
 const MainVisual = () => {
@@ -34,7 +33,7 @@ const MainVisual = () => {
               ref={mainSlide}
               className={"item0" + it.id + (idx === IDX ? " on" : "")}
             >
-              <div>
+              <div className="inner">
                 <h2>{it.content}</h2>
               </div>
             </figure>
