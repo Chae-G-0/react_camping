@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import authData from "../../store/loginSlice";
+
 const SignInBox = styled.div`
   width: 400px;
   margin: 0 auto;

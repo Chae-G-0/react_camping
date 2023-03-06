@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
-const { User } = require("./user");
+const { User } = require("./schema");
+const { Board } = require("./schema");
 
 const createJWT = () => {
   const secretKey = "secretkey";
@@ -75,6 +76,11 @@ router.post("/verify", (req, res) => {
       });
     }
   });
+});
+
+router.post("/board", async (req, res) => {
+  await Board.insertMany(req.body)
+  res.send("board")
 });
 
 module.exports = router;

@@ -33,6 +33,7 @@ const userSchema = new mongoose.Schema({
 });
 
 const boardSchema = new mongoose.Schema({
+  id: Number,
   author: String,
   title: String,
   content: String,

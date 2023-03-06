@@ -36,11 +36,13 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
+// auth
 app.post("/signup", router);
 app.post("/signin", router);
 app.post("/verify", router);
 
-
+// board
+app.post("/board", router)
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "../build/index.html"));
