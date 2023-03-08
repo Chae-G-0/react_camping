@@ -1,8 +1,14 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../style/board.scss";
 
 const BDList = () => {
+  useEffect(() => {
+    axios.get("/board").then((res) => console.log(res.data));
+    console.log("list");
+  }, []);
+
   return (
     <div className="BoardList">
       <table>

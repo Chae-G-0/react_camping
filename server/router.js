@@ -83,4 +83,9 @@ router.post("/board", async (req, res) => {
   res.send("board")
 });
 
+router.get("/board", async (req, res) => {
+  await Board.find(req.body)
+  res.send("boardlist")
+});
+
 module.exports = router;

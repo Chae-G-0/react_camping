@@ -63,7 +63,7 @@ const SignUp = () => {
       password: signUpForm.password,
     };
     try {
-      axios.post("http://localhost:8080/signup", userInfo);
+      axios.post("/signup", userInfo);
       alert("회원가입이 완료되었습니다.");
       navigate("/signin", { replace: true });
     } catch (error) {

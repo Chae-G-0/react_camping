@@ -42,7 +42,10 @@ app.post("/signin", router);
 app.post("/verify", router);
 
 // board
+app.get("/board", router)
 app.post("/board", router)
+app.put("/boardupdate", router)
+app.delete("/boarddelete", router)
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "../build/index.html"));

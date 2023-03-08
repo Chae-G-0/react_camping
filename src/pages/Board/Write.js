@@ -19,7 +19,8 @@ const Write = () => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (boardForm.title.length < 1) {
       titleInput.current.focus();
       return;
@@ -28,11 +29,11 @@ const Write = () => {
       contentInput.current.focus();
       return;
     }
-    return navigate("/board");
+    handleBoard();
+    return navigate("/board", { replace: true });
   };
 
-  const handleBoard = async (e) => {
-    e.preventDefault();
+  const handleBoard = async () => {
     const boardInfo = {
       title: boardForm.title,
       content: boardForm.content,
@@ -40,9 +41,9 @@ const Write = () => {
     try {
       const res = await axios.post("/board", boardInfo);
       if (res.status === 200) {
-        console.log("등록!")
+        console.log("등록 됨!");
         alert("게시글이 등록되었습니다.");
-        return handleSubmit();
+        return;
       }
     } catch (error) {
       console.log(error);
@@ -91,7 +92,7 @@ const Write = () => {
         <div className="btn">
           <button
             onClick={(e) => {
-              handleBoard(e);
+              handleSubmit(e);
             }}
           >
             등록하기
