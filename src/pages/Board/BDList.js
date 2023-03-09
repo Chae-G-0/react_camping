@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import "../../style/board.scss";
 
 const BDList = () => {
-  const [boardList, setBoardList] = useState()
+  const [boardList, setBoardList] = useState([]);
+
   useEffect(() => {
     const list = axios
       .get("http://localhost:8080/api/board")
-      .then((res) => console.log(res.data));
-    console.log(list)
+      .then((res) => setBoardList(res.data));
   }, []);
+  console.log(boardList);
   return (
     <div className="BoardList">
       <table>
@@ -23,25 +24,20 @@ const BDList = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="no">1111</td>
-            <td className="tit">
-              <Link to="">제목</Link>
-            </td>
-            <td className="name">작성자</td>
-            <td className="date">날짜</td>
-          </tr>
+          {boardList.map((it, idx) => {
+            return (
+              <tr key={idx}>
+                <td className="no">1</td>
+                <td className="tit">
+                  <Link to="">{ it.title}</Link>
+                </td>
+                <td className="name">작성자</td>
+                <td className="date">날짜</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
-      {/* <div>
-        {boardList.map(it => {
-          return (
-            <div>
-              {it.title}
-            </div>
-          )
-        })}
-      </div> */}
     </div>
   );
 };

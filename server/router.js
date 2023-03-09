@@ -79,13 +79,18 @@ router.post("/api/verify", (req, res) => {
 });
 
 router.post("/api/board", async (req, res) => {
-  await Board.insertMany(req.body)
-  res.send("board")
+  await Board.insertMany(req.body);
+  res.send("board");
 });
 
 router.get("/api/board", async (req, res) => {
-  await Board.find()
-  res.send("게시판")
+  try {
+    const boardlist = await Board.find({});
+    res.json(boardlist)
+    res.send("게시판");
+  } catch (err) {
+    console.error(err)
+  }
 });
 
 module.exports = router;
