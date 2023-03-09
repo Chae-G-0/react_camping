@@ -75,7 +75,7 @@ const SignIn = () => {
     };
     try {
       const result = axios
-        .post("/signin", userInfo)
+        .post("/api/signin", userInfo)
         .catch((err) => console.log(err.response.data));
       localStorage.setItem("access_token", result.data.ACCESS_TOKEN);
       dispatch(authData(result.data.ACCESS_TOKEN));

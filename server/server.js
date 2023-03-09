@@ -13,7 +13,7 @@ app.use(express.json());
 const cors = require("cors");
 app.use(cors());
 
-mongoose.set("strictQuery", false);
+mongoose.set("strictQuery", true);
 
 mongoose
   .connect(
@@ -37,15 +37,15 @@ app.get("/", function (req, res) {
 });
 
 // auth
-app.post("/signup", router);
-app.post("/signin", router);
-app.post("/verify", router);
+app.post("/api/signup", router);
+app.post("/api/signin", router);
+app.post("/api/verify", router);
 
 // board
-app.get("/board", router)
-app.post("/board", router)
-app.put("/boardupdate", router)
-app.delete("/boarddelete", router)
+app.get("/api/board", router);
+app.post("/api/board", router);
+app.put("/api/boardupdate", router);
+app.delete("/api/boarddelete", router);
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "../build/index.html"));

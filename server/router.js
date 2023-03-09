@@ -23,7 +23,7 @@ const createJWT = () => {
   return accessToken;
 };
 
-router.post("/signup", async (req, res) => {
+router.post("/api/signup", async (req, res) => {
   req.body.password = crypto
     .createHash("sha512")
     .update(req.body.password)
@@ -32,7 +32,7 @@ router.post("/signup", async (req, res) => {
   res.send("signup");
 });
 
-router.post("/signin", (req, res) => {
+router.post("/api/signin", (req, res) => {
   let email = { email: req.body.email };
   let password = {
     password: crypto
@@ -61,7 +61,7 @@ router.post("/signin", (req, res) => {
   );
 });
 
-router.post("/verify", (req, res) => {
+router.post("/api/verify", (req, res) => {
   const token = req.headers["authorization"];
   jwt.verify(token, "secretkey", (err, decoded) => {
     if (err) {
@@ -78,14 +78,14 @@ router.post("/verify", (req, res) => {
   });
 });
 
-router.post("/board", async (req, res) => {
+router.post("/api/board", async (req, res) => {
   await Board.insertMany(req.body)
   res.send("board")
 });
 
-router.get("/board", async (req, res) => {
-  await Board.find(req.body)
-  res.send("boardlist")
+router.get("/api/board", async (req, res) => {
+  await Board.find()
+  res.send("게시판")
 });
 
 module.exports = router;

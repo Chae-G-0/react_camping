@@ -39,7 +39,7 @@ const Write = () => {
       content: boardForm.content,
     };
     try {
-      const res = await axios.post("/board", boardInfo);
+      const res = await axios.post("/api/board", boardInfo);
       if (res.status === 200) {
         console.log("등록 됨!");
         alert("게시글이 등록되었습니다.");

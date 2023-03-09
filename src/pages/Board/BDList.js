@@ -1,14 +1,16 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../style/board.scss";
 
 const BDList = () => {
+  const [boardList, setBoardList] = useState()
   useEffect(() => {
-    axios.get("/board").then((res) => console.log(res.data));
-    console.log("list");
+    const list = axios
+      .get("http://localhost:8080/api/board")
+      .then((res) => console.log(res.data));
+    console.log(list)
   }, []);
-
   return (
     <div className="BoardList">
       <table>
@@ -22,7 +24,7 @@ const BDList = () => {
         </thead>
         <tbody>
           <tr>
-            <td className="no">1</td>
+            <td className="no">1111</td>
             <td className="tit">
               <Link to="">제목</Link>
             </td>
@@ -31,6 +33,15 @@ const BDList = () => {
           </tr>
         </tbody>
       </table>
+      {/* <div>
+        {boardList.map(it => {
+          return (
+            <div>
+              {it.title}
+            </div>
+          )
+        })}
+      </div> */}
     </div>
   );
 };
