@@ -15,6 +15,7 @@ import Notice from "./pages/Notice";
 import Board from "./pages/Board/Board";
 import Write from "./pages/Board/Write";
 import Mypage from "./pages/Mypage";
+import BDitem from "./pages/Board/BDitem";
 
 function App() {
   const [campingData, setCampingData] = useState([]);
@@ -52,7 +53,10 @@ function App() {
         />
         <Route path="/thema" element={<Thema campingData={campingData} />} />
         <Route path="/notice" element={<Notice />} />
-        <Route path="/board" element={<Board />} />
+        {/* <Route path="/board" element={<Board />} > */}
+        <Route path="/board" element={<Board />}>
+          <Route path="/board/:id" element={<BDitem />} />
+        </Route>
         <Route path="/write" element={<Write />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />

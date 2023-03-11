@@ -83,11 +83,10 @@ router.post("/api/board", async (req, res) => {
   res.send("board");
 });
 
-router.get("/api/board", async (req, res) => {
+router.get("/api/boardlist", async (req, res) => {
   try {
     const boardlist = await Board.find({});
     res.json(boardlist)
-    res.send("게시판");
   } catch (err) {
     console.error(err)
   }

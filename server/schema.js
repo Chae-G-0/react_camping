@@ -37,6 +37,7 @@ const boardSchema = new mongoose.Schema({
   author: String,
   title: String,
   content: String,
+  date: String,
 });
 
 const User = mongoose.model("User", userSchema, "User");

@@ -1,15 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { boardData } from "../../store/boardSlice";
 import "../../style/board.scss";
 
-const BDList = () => {
-  const [boardList, setBoardList] = useState([]);
-
+const BDList = () => { 
+  const boardList = useSelector((state) => state.boardSlice.list);
+  const dispatch = useDispatch();
+  // const [boardList, setBoardList] = useState([]);
   useEffect(() => {
-    const list = axios
-      .get("http://localhost:8080/api/board")
-      .then((res) => setBoardList(res.data));
+    // const list = axios
+    //   .get("http://localhost:8080/api/boardlist")
+    //   .then((res) => setBoardList(res.data));
+    dispatch(boardData(boardList));
   }, []);
   console.log(boardList);
   return (
@@ -27,12 +31,12 @@ const BDList = () => {
           {boardList.map((it, idx) => {
             return (
               <tr key={idx}>
-                <td className="no">1</td>
+                <td className="no">{idx + 1}</td>
                 <td className="tit">
-                  <Link to="">{ it.title}</Link>
+                  <Link to={`/board/${idx}`}>{it.title}</Link>
                 </td>
                 <td className="name">작성자</td>
-                <td className="date">날짜</td>
+                <td className="date">{it.date}</td>
               </tr>
             );
           })}

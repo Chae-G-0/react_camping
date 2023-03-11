@@ -42,7 +42,7 @@ app.post("/api/signin", router);
 app.post("/api/verify", router);
 
 // board
-app.get("/api/board", router);
+app.get("/api/boardlist", router);
 app.post("/api/board", router);
 app.put("/api/boardupdate", router);
 app.delete("/api/boarddelete", router);

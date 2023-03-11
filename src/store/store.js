@@ -1,4 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import boardSlice from "./boardSlice";
 import loginSlice from "./loginSlice"
 
 const NOTICE = createSlice({
@@ -62,5 +63,6 @@ export default configureStore({
     NOTICE: NOTICE.reducer,
     login: loginSlice,
     logout: loginSlice,
+    boardSlice: boardSlice,
   },
 });

@@ -16,7 +16,26 @@ const Write = () => {
     setBoardForm({
       ...boardForm,
       [e.target.name]: e.target.value,
+      date: new Date().toLocaleDateString(),
     });
+  };
+
+  const handleBoard = async () => {
+    const boardInfo = {
+      title: boardForm.title,
+      content: boardForm.content,
+      date: boardForm.date,
+    };
+    try {
+      const res = await axios.post("/api/board", boardInfo);
+      if (res.status === 200) {
+        console.log("등록 됨!");
+        alert("게시글이 등록되었습니다.");
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -31,23 +50,6 @@ const Write = () => {
     }
     handleBoard();
     return navigate("/board", { replace: true });
-  };
-
-  const handleBoard = async () => {
-    const boardInfo = {
-      title: boardForm.title,
-      content: boardForm.content,
-    };
-    try {
-      const res = await axios.post("/api/board", boardInfo);
-      if (res.status === 200) {
-        console.log("등록 됨!");
-        alert("게시글이 등록되었습니다.");
-        return;
-      }
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
