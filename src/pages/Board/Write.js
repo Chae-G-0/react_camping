@@ -6,8 +6,10 @@ import "../../style/board.scss";
 const Write = () => {
   const titleInput = useRef();
   const contentInput = useRef();
+  const boardId = useRef(1);
   const navigate = useNavigate();
   const [boardForm, setBoardForm] = useState({
+    id: boardId.current,
     title: "",
     content: "",
   });
@@ -22,6 +24,7 @@ const Write = () => {
 
   const handleBoard = async () => {
     const boardInfo = {
+      id: boardForm.id,
       title: boardForm.title,
       content: boardForm.content,
       date: boardForm.date,
@@ -49,6 +52,7 @@ const Write = () => {
       return;
     }
     handleBoard();
+    boardId.current++;
     return navigate("/board", { replace: true });
   };
 

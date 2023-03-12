@@ -55,7 +55,7 @@ function App() {
         <Route path="/notice" element={<Notice />} />
         {/* <Route path="/board" element={<Board />} > */}
         <Route path="/board" element={<Board />}>
-          <Route path="/board/:id" element={<BDitem />} />
+          <Route path="/boarditem/:id" element={<BDitem />} />
         </Route>
         <Route path="/write" element={<Write />} />
         <Route path="/signin" element={<Signin />} />

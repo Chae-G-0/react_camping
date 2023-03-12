@@ -4,17 +4,14 @@ import { Link } from "react-router-dom";
 import { boardData } from "../../store/boardSlice";
 import "../../style/board.scss";
 
-const BDList = () => { 
+const BDList = () => {
   const boardList = useSelector((state) => state.boardSlice.list);
   const dispatch = useDispatch();
-  // const [boardList, setBoardList] = useState([]);
+
   useEffect(() => {
-    // const list = axios
-    //   .get("http://localhost:8080/api/boardlist")
-    //   .then((res) => setBoardList(res.data));
     dispatch(boardData());
   }, [dispatch]);
-  console.log(boardList);
+  
   return (
     <div className="BoardList">
       <table>
@@ -30,9 +27,9 @@ const BDList = () => {
           {boardList.map((it, idx) => {
             return (
               <tr key={idx}>
-                <td className="no">{idx + 1}</td>
+                <td className="no">{it.id}</td>
                 <td className="tit">
-                  <Link to={`/board/${idx}`}>{it.title}</Link>
+                  <Link to={`/boarditem/${it.id}`}>{it.title}</Link>
                 </td>
                 <td className="name">작성자</td>
                 <td className="date">{it.date}</td>

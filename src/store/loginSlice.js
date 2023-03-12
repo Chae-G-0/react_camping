@@ -1,9 +1,9 @@
+import axios from "axios";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
-const { default: axios } = require("axios");
 
 const authData = createAsyncThunk("loginSlice/LOGIN", async (userState) => {
   const result = await axios.post(
-    "/verify",
+    "/api/verify",
     {},
     {
       headers: {
@@ -17,6 +17,22 @@ const authData = createAsyncThunk("loginSlice/LOGIN", async (userState) => {
     return Object.apply(result.data);
   }
 });
+
+export const signUpAsync = createAsyncThunk(
+  "/signUpAsync",
+  async (signupInfo, { rejectWithValue }) => {
+    try {
+      const response = await axios.post("/api/signup", {
+        name: signupInfo.name,
+        email: signupInfo.email,
+        password: signupInfo.password,
+      });
+      return { ...response.data, name: `${signupInfo.name}` };
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
 
 const initialState = {
   name: "",
@@ -49,21 +65,7 @@ const loginSlice = createSlice({
   },
 });
 
-export const signUpAsync = createAsyncThunk(
-  "/signUpAsync",
-  async (signupInfo, { rejectWithValue }) => {
-    try {
-      const response = await axios.post("/signup", {
-        name: signupInfo.name,
-        email: signupInfo.email,
-        password: signupInfo.password,
-      });
-      return { ...response.data, name: `${signupInfo.name}` };
-    } catch (err) {
-      return rejectWithValue(err.response.data);
-    }
-  }
-);
+
 
 export const { LOGIN, LOGOUT } = loginSlice.actions;
 export default loginSlice.reducer;

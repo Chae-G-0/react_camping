@@ -2,7 +2,7 @@ import axios from "axios";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 const boardData = createAsyncThunk("boardSlice/boardData", async () => {
-  const res = await axios.get("http://localhost:8080/api/boardlist");
+  const res = await axios.get("/api/boardlist");
   return res.data;
 });
 
@@ -12,10 +12,9 @@ const boardSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(boardData.pending, (state, action) => {
-      console.log("Loading");
     });
     builder.addCase(boardData.fulfilled, (state, action) => {
-      console.log("conplete");
+      console.log("complete");
       state.list = action.payload;
     });
     builder.addCase(boardData.rejected, (state, action) => {
