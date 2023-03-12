@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -13,8 +12,8 @@ const BDList = () => {
     // const list = axios
     //   .get("http://localhost:8080/api/boardlist")
     //   .then((res) => setBoardList(res.data));
-    dispatch(boardData(boardList));
-  }, []);
+    dispatch(boardData());
+  }, [dispatch]);
   console.log(boardList);
   return (
     <div className="BoardList">

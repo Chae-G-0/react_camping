@@ -1,7 +1,7 @@
+import axios from "axios";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
-const { default: axios } = require("axios");
 
-export const boardData = createAsyncThunk("boardData", async () => {
+const boardData = createAsyncThunk("boardSlice/boardData", async () => {
   const res = await axios.get("http://localhost:8080/api/boardlist");
   return res.data;
 });
@@ -10,18 +10,24 @@ const boardSlice = createSlice({
   name: "boardSlice",
   initialState: { list: [] },
   reducers: {},
-  extraReducers: {
-    [boardData.pending]: (state, action) => {
-      console.log("pending");
-    },
-    [boardData.fulfilled]: (state, action) => {
-      state.list = action.payload
-      console.log("fulfeild");
-    },
-    [boardData.rejected]: (state, action) => {
-      console.log("rejected");
-    },
+  extraReducers: (builder) => {
+    builder.addCase(boardData.pending, (state, action) => {
+      console.log("Loading");
+    });
+    builder.addCase(boardData.fulfilled, (state, action) => {
+      console.log("conplete");
+      state.list = action.payload;
+    });
+    builder.addCase(boardData.rejected, (state, action) => {
+      if (action.payload) {
+        state.error = action.payload;
+      } else {
+        state.error = action.error.message;
+        console.log(action.error.message);
+      }
+    });
   },
 });
 
 export default boardSlice.reducer;
+export { boardData };
