@@ -53,10 +53,8 @@ function App() {
         />
         <Route path="/thema" element={<Thema campingData={campingData} />} />
         <Route path="/notice" element={<Notice />} />
-        {/* <Route path="/board" element={<Board />} > */}
-        <Route path="/board" element={<Board />}>
-          <Route path="/boarditem/:id" element={<BDitem />} />
-        </Route>
+        <Route path="/board" element={<Board />} />
+        <Route path="/boarditem/:id" element={<BDitem />} />
         <Route path="/write" element={<Write />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />

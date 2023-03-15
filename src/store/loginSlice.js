@@ -18,7 +18,7 @@ const authData = createAsyncThunk("loginSlice/LOGIN", async (userState) => {
   }
 });
 
-export const signUpAsync = createAsyncThunk(
+const signUpAsync = createAsyncThunk(
   "/signUpAsync",
   async (signupInfo, { rejectWithValue }) => {
     try {
@@ -65,8 +65,6 @@ const loginSlice = createSlice({
   },
 });
 
-
-
 export const { LOGIN, LOGOUT } = loginSlice.actions;
 export default loginSlice.reducer;
-export { authData };
+export { authData, signUpAsync };

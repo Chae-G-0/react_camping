@@ -11,8 +11,7 @@ const boardSlice = createSlice({
   initialState: { list: [] },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(boardData.pending, (state, action) => {
-    });
+    builder.addCase(boardData.pending, (state, action) => {});
     builder.addCase(boardData.fulfilled, (state, action) => {
       console.log("complete");
       state.list = action.payload;

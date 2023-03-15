@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import "../../style/board.scss";
 
 const Write = () => {
+  const boardId = useRef(1);
   const titleInput = useRef();
   const contentInput = useRef();
-  const boardId = useRef(1);
   const navigate = useNavigate();
   const [boardForm, setBoardForm] = useState({
     id: boardId.current,
@@ -41,8 +41,7 @@ const Write = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (boardForm.title.length < 1) {
       titleInput.current.focus();
       return;
@@ -51,8 +50,8 @@ const Write = () => {
       contentInput.current.focus();
       return;
     }
+    boardId.current += 1;
     handleBoard();
-    boardId.current++;
     return navigate("/board", { replace: true });
   };
 
@@ -96,13 +95,7 @@ const Write = () => {
           </tbody>
         </table>
         <div className="btn">
-          <button
-            onClick={(e) => {
-              handleSubmit(e);
-            }}
-          >
-            등록하기
-          </button>
+          <button onClick={handleSubmit}>등록하기</button>
         </div>
       </div>
     </section>

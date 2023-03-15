@@ -75,3 +75,50 @@ section {
         }
     }
 }
+
+.BDitem {
+
+    .item {
+        .top{
+            display: flex;
+            justify-content: space-between;
+            background: #f7f7f7;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 20px;
+
+            h3 {
+                font-size: 17px;
+                font-weight: 500;
+            }
+
+            span {
+                color: #707070;
+                font-size: 15px;
+            }
+        }
+        p {
+            padding: 20px;
+            font-size: 15px;
+            font-weight: 500;
+            border-bottom: 1px solid #ddd;
+        }
+    }
+
+    .itembtn {
+        display: flex;
+        justify-content: end;
+        gap: 10px;
+        padding: 30px 0 0 0;
+        text-align: right;
+    
+        button {
+            border: 1px solid #ced4da;
+            padding: 7px 20px;
+            background: #f8f9fa;
+            font-size: 15px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    }
+}
