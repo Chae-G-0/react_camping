@@ -13,32 +13,38 @@ const BDList = () => {
   }, [dispatch]);
 
   return (
-    <div className="BoardList">
-      <table>
-        <thead>
+    <table>
+      <thead>
+        <tr>
+          <th className="num">번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>작성일자</th>
+        </tr>
+      </thead>
+      {boardList.length < 1 ? (
+        <tbody className="non">
           <tr>
-            <th className="no">번호</th>
-            <th className="tit">제목</th>
-            <th className="name">작성자</th>
-            <th className="date">날짜</th>
+            <td colSpan={4}>등록된 게시글이 없습니다.</td>
           </tr>
-        </thead>
+        </tbody>
+      ) : (
         <tbody>
           {boardList.map((it, idx) => {
             return (
               <tr key={idx}>
-                <td className="no">{it.id}</td>
+                <td>{it.id}</td>
                 <td className="tit">
                   <Link to={`/boarditem/${it.id}`}>{it.title}</Link>
                 </td>
-                <td className="name">작성자</td>
-                <td className="date">{it.date}</td>
+                <td>작성자</td>
+                <td>{it.date}</td>
               </tr>
             );
           })}
         </tbody>
-      </table>
-    </div>
+      )}
+    </table>
   );
 };
 

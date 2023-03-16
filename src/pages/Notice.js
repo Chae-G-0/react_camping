@@ -12,11 +12,10 @@ const Notice = () => {
         <table>
           <thead>
             <tr>
-              <th>번호</th>
+              <th className="num">번호</th>
               <th>제목</th>
               <th>작성자</th>
               <th>작성일자</th>
-              <th>조희수</th>
             </tr>
           </thead>
           <tbody>
@@ -26,8 +25,7 @@ const Notice = () => {
                   <td>{it.id}</td>
                   <td className="tit">{it.tit}</td>
                   <td>관리자</td>
-                  <td>2023-02-23</td>
-                  <td>{it.view}</td>
+                  <td>2023.02.23.</td>
                 </tr>
               );
             })}
