@@ -63,7 +63,7 @@ const SignUp = () => {
       password: signUpForm.password,
     };
     try {
-      axios.post("/api/signup", userInfo);
+      axios.post("http://localhost:8080/api/signup", userInfo);
       alert("회원가입이 완료되었습니다.");
       navigate("/signin", { replace: true });
     } catch (error) {
@@ -80,9 +80,11 @@ const SignUp = () => {
       ? setBtnDisabled(false)
       : setBtnDisabled(true);
   };
+
   useEffect(() => {
     authBtn();
   }, [signUpForm]);
+  
   return (
     <SignUpBox>
       <h2>회원가입 페이지</h2>

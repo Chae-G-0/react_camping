@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 import "../../style/board.scss";
 
 const Write = () => {
-  const boardId = useRef(1);
+  const id = useRef(1);
   const titleInput = useRef();
   const contentInput = useRef();
   const navigate = useNavigate();
   const [boardForm, setBoardForm] = useState({
-    id: boardId.current,
     title: "",
     content: "",
   });
@@ -17,6 +16,7 @@ const Write = () => {
   const handleBoardState = (e) => {
     setBoardForm({
       ...boardForm,
+      id: id.current,
       [e.target.name]: e.target.value,
       date: new Date().toLocaleDateString(),
     });
@@ -24,11 +24,12 @@ const Write = () => {
 
   const handleBoard = async () => {
     const boardInfo = {
-      id: boardForm.id,
+      id: id.current,
       title: boardForm.title,
       content: boardForm.content,
       date: boardForm.date,
     };
+    id.current += 1;
     try {
       const res = await axios.post("/api/board", boardInfo);
       if (res.status === 200) {
@@ -50,10 +51,11 @@ const Write = () => {
       contentInput.current.focus();
       return;
     }
-    boardId.current += 1;
     handleBoard();
     return navigate("/board", { replace: true });
   };
+
+  console.log(id);
 
   return (
     <section className="Write">

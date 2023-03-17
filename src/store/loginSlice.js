@@ -1,38 +1,38 @@
 import axios from "axios";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
-const authData = createAsyncThunk("loginSlice/LOGIN", async (userState) => {
-  const result = await axios.post(
+const authData = createAsyncThunk("loginSlice/LOGIN", async (access_token) => {
+  const res = await axios.post(
     "/api/verify",
     {},
     {
       headers: {
-        Authorization: userState,
+        Authorization: access_token,
       },
     }
   );
-  if (result.data.ACCESS_TOKEN) {
-    return Object.values(result.data);
+  if (res.data.ACCESS_TOKEN) {
+    return Object.values(res.data);
   } else {
-    return Object.apply(result.data);
+    return Object.apply(res.data);
   }
 });
 
-const signUpAsync = createAsyncThunk(
-  "/signUpAsync",
-  async (signupInfo, { rejectWithValue }) => {
-    try {
-      const response = await axios.post("/api/signup", {
-        name: signupInfo.name,
-        email: signupInfo.email,
-        password: signupInfo.password,
-      });
-      return { ...response.data, name: `${signupInfo.name}` };
-    } catch (err) {
-      return rejectWithValue(err.response.data);
-    }
-  }
-);
+// const signUpAsync = createAsyncThunk(
+//   "/signUpAsync",
+//   async (userInfo, { rejectWithValue }) => {
+//     try {
+//       const res = await axios.post("/api/signup", {
+//         name: userInfo.name,
+//         email: userInfo.email,
+//         password: userInfo.password,
+//       });
+//       return { ...res.data, name: `${userInfo.name}` };
+//     } catch (err) {
+//       return rejectWithValue(err.res.data);
+//     }
+//   }
+// );
 
 const initialState = {
   name: "",
@@ -57,6 +57,7 @@ const loginSlice = createSlice({
       return state;
     });
     builder.addCase(authData.fulfilled, (state, action) => {
+      console.log("login complete")
       state.isLoginState = action.payload;
     });
     builder.addCase(authData.rejected, (state, action) => {
@@ -67,4 +68,4 @@ const loginSlice = createSlice({
 
 export const { LOGIN, LOGOUT } = loginSlice.actions;
 export default loginSlice.reducer;
-export { authData, signUpAsync };
+export { authData };

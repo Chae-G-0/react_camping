@@ -48,6 +48,7 @@ const SignIn = () => {
     id: "",
     password: "",
   });
+
   const handleLogInState = (e) => {
     setLoginForm({
       ...loginForm,
@@ -64,9 +65,9 @@ const SignIn = () => {
       pwInput.current.focus();
       return;
     }
-    navigate("/", {replace: true});
+    navigate("/", { replace: true });
   };
-  
+
   const handleLogin = async (e) => {
     e.preventDefault();
     const userInfo = {
@@ -74,12 +75,9 @@ const SignIn = () => {
       password: loginForm.password,
     };
     try {
-      const result = axios
-        .post("/api/signin", userInfo)
-        .catch((err) => console.log(err.response.data));
-      localStorage.setItem("access_token", result.data.ACCESS_TOKEN);
-      dispatch(authData(result.data.ACCESS_TOKEN));
-      dispatch(LOGIN());
+      const res = axios.post("/api/signin", userInfo);
+      localStorage.setItem("access_token", res.data.ACCESS_TOKEN);
+      dispatch(authData(res.data.ACCESS_TOKEN));
       handleSubmit();
       console.log("login!!!");
     } catch (err) {

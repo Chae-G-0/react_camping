@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const { User } = require("./schema");
 const { Board } = require("./schema");
 
+// jwt
 const createJWT = () => {
   const secretKey = "secretkey";
   const accessToken = jwt.sign(
@@ -23,6 +24,7 @@ const createJWT = () => {
   return accessToken;
 };
 
+// 회원가입
 router.post("/api/signup", async (req, res) => {
   req.body.password = crypto
     .createHash("sha512")
@@ -32,6 +34,7 @@ router.post("/api/signup", async (req, res) => {
   res.send("signup");
 });
 
+// 로그인
 router.post("/api/signin", (req, res) => {
   let email = { email: req.body.email };
   let password = {
@@ -78,11 +81,13 @@ router.post("/api/verify", (req, res) => {
   });
 });
 
+// 게시판 등록
 router.post("/api/board", async (req, res) => {
   await Board.insertMany(req.body);
   res.send("board");
 });
 
+// 게시판 데이터 가져오기
 router.get("/api/boardlist", async (req, res) => {
   try {
     const boardlist = await Board.find({});
