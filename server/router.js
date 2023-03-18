@@ -8,20 +8,17 @@ const { Board } = require("./schema");
 // jwt
 const createJWT = () => {
   const secretKey = "secretkey";
-  const accessToken = jwt.sign(
+  const access_token = jwt.sign(
     {
       token_type: "access",
-      email: email,
-      name: name,
     },
     secretKey,
     {
-      issuer: "issuer",
       expiresIn: "5m",
       subject: "access",
     }
   );
-  return accessToken;
+  return access_token;
 };
 
 // 회원가입
@@ -36,36 +33,38 @@ router.post("/api/signup", async (req, res) => {
 
 // 로그인
 router.post("/api/signin", (req, res) => {
-  let email = { email: req.body.email };
-  let password = {
+  const email = { email: req.body.email };
+  const password = {
     password: crypto
       .createHash("sha512")
       .update(req.body.password)
       .digest("base64"),
   };
-  let signupAuth = Object.assign(email, password);
-  User.findOne(
-    email.then((result) => {
+  const Auth = Object.assign(email, password);
+  User.findOne(email)
+    .then((result) => {
       if (result === null) {
-        alert("아이디 불일치");
+        res.status(404).send(console.log("아이디 불일치"));
       } else {
-        User.findOne(signupAuth).then((result) => {
+        User.findOne(Auth).then((result) => {
           if (result === null) {
-            alert("비밀번호 불일치");
+            res.status(400).send(console.log("비밀번호 불일치"));
           } else {
-            const token = createJWT(req.body.email, result.email);
-            res.send({
-              ACCESS_TOKEN: token,
+            const access_token = createJWT();
+            res.json({
+              ACCESS_TOKEN: access_token,
             });
           }
         });
       }
     })
-  );
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
 router.post("/api/verify", (req, res) => {
-  const token = req.headers["authorization"];
+  const token = req.headers["Authorization"];
   jwt.verify(token, "secretkey", (err, decoded) => {
     if (err) {
       res.send({
@@ -75,7 +74,7 @@ router.post("/api/verify", (req, res) => {
     } else {
       res.send({
         RESULT: true,
-        DATA: decoded.userId,
+        DATA: decoded.email,
       });
     }
   });
@@ -91,9 +90,9 @@ router.post("/api/board", async (req, res) => {
 router.get("/api/boardlist", async (req, res) => {
   try {
     const boardlist = await Board.find({});
-    res.json(boardlist)
+    res.json(boardlist);
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
 });
 

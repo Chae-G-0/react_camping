@@ -1,20 +1,23 @@
 import axios from "axios";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
-const authData = createAsyncThunk("loginSlice/LOGIN", async (access_token) => {
+const authData = createAsyncThunk("loginSlice/LOGIN", async (ACCESS_TOKEN) => {
   const res = await axios.post(
     "/api/verify",
     {},
     {
       headers: {
-        Authorization: access_token,
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${ACCESS_TOKEN}`,
       },
     }
   );
   if (res.data.ACCESS_TOKEN) {
-    return Object.values(res.data);
+    // return Object.values(res.data);
+    return true;
   } else {
-    return Object.apply(res.data);
+    // return Object.apply(res.data);
+    return false;
   }
 });
 

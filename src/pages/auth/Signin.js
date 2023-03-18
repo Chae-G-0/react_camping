@@ -45,7 +45,7 @@ const SignIn = () => {
   const pwInput = useRef();
   const navigate = useNavigate();
   const [loginForm, setLoginForm] = useState({
-    id: "",
+    email: "",
     password: "",
   });
 
@@ -57,7 +57,7 @@ const SignIn = () => {
   };
 
   const handleSubmit = () => {
-    if (loginForm.id.length < 1) {
+    if (loginForm.email.length < 1) {
       idInput.current.focus();
       return;
     }
@@ -71,26 +71,33 @@ const SignIn = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     const userInfo = {
-      id: loginForm.id,
+      email: loginForm.email,
       password: loginForm.password,
     };
     try {
-      const res = axios.post("/api/signin", userInfo);
+      const res = await axios.post("/api/signin", userInfo);
+      console.log(res);
       localStorage.setItem("access_token", res.data.ACCESS_TOKEN);
       dispatch(authData(res.data.ACCESS_TOKEN));
-      handleSubmit();
-      console.log("login!!!");
-    } catch (err) {
-      return console.log(err);
+      if (res.status === 200) {
+        handleSubmit();
+        console.log(LOGIN)
+        return console.log("login!!!");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        alert("존재하지 않는 아이디입니다.");
+        return console.log(error);
+      }
     }
   };
 
   return (
     <SignInBox>
       <h2>로그인 페이지</h2>
-      <label htmlFor="id">아이디</label>
+      <label htmlFor="email">아이디</label>
       <input
-        id="id"
+        id="email"
         ref={idInput}
         placeholder="이메일를 입력해 주세요."
         onChange={(e) => {
