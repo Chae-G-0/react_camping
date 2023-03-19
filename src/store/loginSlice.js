@@ -1,25 +1,25 @@
 import axios from "axios";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
-const authData = createAsyncThunk("loginSlice/LOGIN", async (ACCESS_TOKEN) => {
-  const res = await axios.post(
-    "/api/verify",
-    {},
-    {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${ACCESS_TOKEN}`,
-      },
+const authData = createAsyncThunk(
+  "loginSlice/authData",
+  async (access_token) => {
+    const res = await axios.post(
+      "/api/verify",
+      {},
+      {
+        headers: {
+          Authorization: access_token,
+        },
+      }
+    );
+    if (res.data.RESULT) {
+      return true;
+    } else {
+      return false;
     }
-  );
-  if (res.data.ACCESS_TOKEN) {
-    // return Object.values(res.data);
-    return true;
-  } else {
-    // return Object.apply(res.data);
-    return false;
   }
-});
+);
 
 // const signUpAsync = createAsyncThunk(
 //   "/signUpAsync",
@@ -48,27 +48,27 @@ const loginSlice = createSlice({
   name: "loginSlice",
   initialState,
   reducers: {
-    LOGIN: (state) => {
-      state.isLoginState = true;
+    ISLOGIN: (state, payload) => {
+      state.isLoginState = payload;
     },
-    LOGOUT: (state) => {
-      state.isLoginState = false;
-    },
+    // LOGOUT: (state) => {
+    //   state.isLoginState = false;
+    // },
   },
   extraReducers: (builder) => {
     builder.addCase(authData.pending, (state, action) => {
-      return state;
+      console.log("loading");
     });
     builder.addCase(authData.fulfilled, (state, action) => {
-      console.log("login complete")
+      console.log("login complete");
       state.isLoginState = action.payload;
     });
     builder.addCase(authData.rejected, (state, action) => {
-      return state;
+      console.log("fail");
     });
   },
 });
 
-export const { LOGIN, LOGOUT } = loginSlice.actions;
+export const { ISLOGIN } = loginSlice.actions;
 export default loginSlice.reducer;
 export { authData };

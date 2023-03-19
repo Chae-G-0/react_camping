@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { LOGIN, LOGOUT } from "../store/loginSlice";
+import { ISLOGIN } from "../store/loginSlice";
+// import { LOGIN, LOGOUT } from "../store/loginSlice";
 
 const HeaderStyle = styled.header`
   height: 100px;
@@ -50,14 +51,12 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoginState = useSelector((state) => state.login.isLoginState);
-  const LOGOUT = useSelector((state) => state.logout.isLoginState);
-  const LOGIN = useSelector((state) => state.login.isLoginState);
 
   const handlelogout = () => {
     localStorage.removeItem("access_token");
-    dispatch(LOGOUT());
+    dispatch(ISLOGIN(false));
     alert("로그아웃 되었습니다.");
-    navigate("/");
+    navigate("/", { replace: true });
   };
 
   return (
@@ -80,7 +79,7 @@ const Header = () => {
         <h1>
           <NavLink to="/">Camping</NavLink>
         </h1>
-        {isLoginState ? (
+        {isLoginState.payload ? (
           <ul className="isLogin">
             <li>
               <NavLink to="/mypage">마이페이지</NavLink>

@@ -11,6 +11,7 @@ const createJWT = () => {
   const access_token = jwt.sign(
     {
       token_type: "access",
+      // email: email,
     },
     secretKey,
     {
@@ -64,9 +65,9 @@ router.post("/api/signin", (req, res) => {
 });
 
 router.post("/api/verify", (req, res) => {
-  const token = req.headers["Authorization"];
-  jwt.verify(token, "secretkey", (err, decoded) => {
-    if (err) {
+  const token = req.headers["authorization"];
+  jwt.verify(token, "secretkey", (error, decoded) => {
+    if (error) {
       res.send({
         RESULT: false,
         DATA: "none",

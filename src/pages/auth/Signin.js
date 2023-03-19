@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import authData from "../../store/loginSlice";
+import authData, { ISLOGIN } from "../../store/loginSlice";
 
 const SignInBox = styled.div`
   width: 400px;
@@ -40,7 +40,7 @@ const SignInBox = styled.div`
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const LOGIN = useSelector((state) => state.login.isLoginState);
+  const isLoginState = useSelector((state) => state.login.isLoginState);
   const idInput = useRef();
   const pwInput = useRef();
   const navigate = useNavigate();
@@ -76,12 +76,11 @@ const SignIn = () => {
     };
     try {
       const res = await axios.post("/api/signin", userInfo);
-      console.log(res);
       localStorage.setItem("access_token", res.data.ACCESS_TOKEN);
       dispatch(authData(res.data.ACCESS_TOKEN));
       if (res.status === 200) {
         handleSubmit();
-        console.log(LOGIN)
+        dispatch(ISLOGIN(true));
         return console.log("login!!!");
       }
     } catch (error) {
