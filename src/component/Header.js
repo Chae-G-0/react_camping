@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ISLOGIN } from "../store/loginSlice";
-// import { LOGIN, LOGOUT } from "../store/loginSlice";
 
 const HeaderStyle = styled.header`
   height: 100px;

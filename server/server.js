@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const app = express();
-// express에 기본으로 body-parser 설치되어 있다고함 지우기
 const bodyParser = require("body-parser");
 const router = require("./router");
 const mongoose = require("mongoose");
@@ -39,7 +38,7 @@ app.get("/", function (req, res) {
 // auth
 app.post("/api/signup", router);
 app.post("/api/signin", router);
-app.post("/api/verify", router);
+// app.post("/api/verify", router);
 
 // board
 app.get("/api/boardlist", router);

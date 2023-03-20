@@ -77,11 +77,11 @@ const SignIn = () => {
     try {
       const res = await axios.post("/api/signin", userInfo);
       localStorage.setItem("access_token", res.data.ACCESS_TOKEN);
-      dispatch(authData(res.data.ACCESS_TOKEN));
+      // dispatch(authData(res.data.ACCESS_TOKEN));
       if (res.status === 200) {
-        handleSubmit();
         dispatch(ISLOGIN(true));
-        return console.log("login!!!");
+        handleSubmit();
+        return console.log("Login!!!");
       }
     } catch (error) {
       if (error.response && error.response.status === 404) {

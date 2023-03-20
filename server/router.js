@@ -6,15 +6,16 @@ const { User } = require("./schema");
 const { Board } = require("./schema");
 
 // jwt
-const createJWT = () => {
-  const secretKey = "secretkey";
+const createJWT = (email) => {
+  const secretKey = "secretKey";
   const access_token = jwt.sign(
     {
       token_type: "access",
-      // email: email,
+      email: email,
     },
     secretKey,
     {
+      issuer: email,
       expiresIn: "5m",
       subject: "access",
     }
@@ -51,7 +52,7 @@ router.post("/api/signin", (req, res) => {
           if (result === null) {
             res.status(400).send(console.log("비밀번호 불일치"));
           } else {
-            const access_token = createJWT();
+            const access_token = createJWT(req.body.email);
             res.json({
               ACCESS_TOKEN: access_token,
             });
@@ -64,22 +65,25 @@ router.post("/api/signin", (req, res) => {
     });
 });
 
-router.post("/api/verify", (req, res) => {
-  const token = req.headers["authorization"];
-  jwt.verify(token, "secretkey", (error, decoded) => {
-    if (error) {
-      res.send({
-        RESULT: false,
-        DATA: "none",
-      });
-    } else {
-      res.send({
-        RESULT: true,
-        DATA: decoded.email,
-      });
-    }
-  });
-});
+// 토큰 검증
+
+// router.post("/api/verify", (req, res) => {
+//   const token = req.headers.Authorization;
+//   jwt.verify(token, "secretKey", (err, decode) => {
+//     if (err) {
+//       console.log(err);
+//       res.json({
+//         RESULT: false,
+//         DATA: "none",
+//       });
+//     } else {
+//       res.json({
+//         RESULT: true,
+//         DATA: decode.email,
+//       });
+//     }
+//   });
+// });
 
 // 게시판 등록
 router.post("/api/board", async (req, res) => {

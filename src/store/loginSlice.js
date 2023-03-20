@@ -1,25 +1,21 @@
 import axios from "axios";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
-const authData = createAsyncThunk(
-  "loginSlice/authData",
-  async (access_token) => {
-    const res = await axios.post(
-      "/api/verify",
-      {},
-      {
-        headers: {
-          Authorization: access_token,
-        },
-      }
-    );
-    if (res.data.RESULT) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-);
+// const authData = createAsyncThunk(
+//   "loginSlice/authData",
+//   async (ACCESS_TOKEN) => {
+//     const res = await axios.post("/api/verify", {
+//       headers: {
+//         Authorization: `Bearer ${ACCESS_TOKEN}`,
+//       },
+//     });
+//     if (res.data.RESULT) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   }
+// );
 
 // const signUpAsync = createAsyncThunk(
 //   "/signUpAsync",
@@ -38,11 +34,12 @@ const authData = createAsyncThunk(
 // );
 
 const initialState = {
-  name: "",
-  email: "",
-  password: "",
+  // name: "",
+  // email: "",
   isLoginState: false,
 };
+
+
 
 const loginSlice = createSlice({
   name: "loginSlice",
@@ -50,25 +47,22 @@ const loginSlice = createSlice({
   reducers: {
     ISLOGIN: (state, payload) => {
       state.isLoginState = payload;
-    },
-    // LOGOUT: (state) => {
-    //   state.isLoginState = false;
-    // },
+    }
   },
-  extraReducers: (builder) => {
-    builder.addCase(authData.pending, (state, action) => {
-      console.log("loading");
-    });
-    builder.addCase(authData.fulfilled, (state, action) => {
-      console.log("login complete");
-      state.isLoginState = action.payload;
-    });
-    builder.addCase(authData.rejected, (state, action) => {
-      console.log("fail");
-    });
-  },
+  // extraReducers: (builder) => {
+  //   builder.addCase(authData.pending, (state, action) => {
+  //     console.log("loading");
+  //   });
+  //   builder.addCase(authData.fulfilled, (state, action) => {
+  //     console.log("login complete");
+  //     state.isLoginState = action.payload;
+  //   });
+  //   builder.addCase(authData.rejected, (state, action) => {
+  //     console.log("fail");
+  //   });
+  // },
 });
 
 export const { ISLOGIN } = loginSlice.actions;
 export default loginSlice.reducer;
-export { authData };
+// export { authData };
