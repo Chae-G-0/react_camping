@@ -38,15 +38,14 @@ const SignUpBox = styled.div`
 const SignUp = () => {
   const navigate = useNavigate();
   const [signUpForm, setSignUpForm] = useState({
-    name: "",
-    email: "",
+    id: "",
     password: "",
   });
   const [btnDisabled, setBtnDisabled] = useState(true);
 
-  const regx = new RegExp(
-    /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
-  );
+  // const regx = new RegExp(
+  //   /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
+  // );
 
   const handleSignUpState = (e) => {
     setSignUpForm({
@@ -58,8 +57,7 @@ const SignUp = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     const userInfo = {
-      name: signUpForm.name,
-      email: signUpForm.email,
+      id: signUpForm.id,
       password: signUpForm.password,
     };
     try {
@@ -76,7 +74,7 @@ const SignUp = () => {
   };
 
   const authBtn = () => {
-    regx.test(signUpForm.email) && signUpForm.password.length >= 8
+    signUpForm.id.length >= 5 && signUpForm.password.length >= 8
       ? setBtnDisabled(false)
       : setBtnDisabled(true);
   };
@@ -88,19 +86,10 @@ const SignUp = () => {
   return (
     <SignUpBox>
       <h2>회원가입 페이지</h2>
-      <label htmlFor="name">닉네임</label>
+      <label htmlFor="id">아이디</label>
       <input
-        placeholder="닉네임 입력해 주세요."
-        id="name"
-        onChange={(e) => {
-          authBtn();
-          handleSignUpState(e);
-        }}
-      />
-      <label htmlFor="email">아이디</label>
-      <input
-        placeholder="이메일을 입력해 주세요."
-        id="email"
+        placeholder="아이디를 5자 이상 입력해주세요."
+        id="id"
         onChange={(e) => {
           authBtn();
           handleSignUpState(e);

@@ -34,12 +34,16 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 // );
 
 const initialState = {
-  // name: "",
-  // email: "",
+  id: "",
   isLoginState: false,
 };
 
-
+export const userData = createAsyncThunk("loginSlice/userData",
+  async () => {
+    const res = await axios.get("/api/userdata");
+    return res.data
+  }
+);
 
 const loginSlice = createSlice({
   name: "loginSlice",
@@ -49,18 +53,18 @@ const loginSlice = createSlice({
       state.isLoginState = payload;
     }
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(authData.pending, (state, action) => {
-  //     console.log("loading");
-  //   });
-  //   builder.addCase(authData.fulfilled, (state, action) => {
-  //     console.log("login complete");
-  //     state.isLoginState = action.payload;
-  //   });
-  //   builder.addCase(authData.rejected, (state, action) => {
-  //     console.log("fail");
-  //   });
-  // },
+  extraReducers: (builder) => {
+    builder.addCase(userData.pending, (state, action) => {
+      console.log("loading");
+    });
+    builder.addCase(userData.fulfilled, (state, action) => {
+      console.log("login complete");
+      state.id = action.payload;
+    });
+    builder.addCase(userData.rejected, (state, action) => {
+      console.log("fail");
+    });
+  },
 });
 
 export const { ISLOGIN } = loginSlice.actions;

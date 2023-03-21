@@ -18,7 +18,7 @@ const Mypage = () => {
     <section className="Mypage">
       {isLoginState ? (
         <div className="inner">
-          <h2>name님의 마이페이지 입니다</h2>
+          <h2>님의 마이페이지 입니다</h2>
           <div className="flexBox">
             <div className="mark">
               <h3>즐겨찾기</h3>

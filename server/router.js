@@ -6,16 +6,16 @@ const { User } = require("./schema");
 const { Board } = require("./schema");
 
 // jwt
-const createJWT = (email) => {
+const createJWT = (id) => {
   const secretKey = "secretKey";
   const access_token = jwt.sign(
     {
       token_type: "access",
-      email: email,
+      id: id,
     },
     secretKey,
     {
-      issuer: email,
+      issuer: id,
       expiresIn: "5m",
       subject: "access",
     }
@@ -35,15 +35,15 @@ router.post("/api/signup", async (req, res) => {
 
 // 로그인
 router.post("/api/signin", (req, res) => {
-  const email = { email: req.body.email };
+  const id = { id: req.body.id };
   const password = {
     password: crypto
       .createHash("sha512")
       .update(req.body.password)
       .digest("base64"),
   };
-  const Auth = Object.assign(email, password);
-  User.findOne(email)
+  const Auth = Object.assign(id, password);
+  User.findOne(id)
     .then((result) => {
       if (result === null) {
         res.status(404).send(console.log("아이디 불일치"));
@@ -52,7 +52,7 @@ router.post("/api/signin", (req, res) => {
           if (result === null) {
             res.status(400).send(console.log("비밀번호 불일치"));
           } else {
-            const access_token = createJWT(req.body.email);
+            const access_token = createJWT(req.body.id);
             res.json({
               ACCESS_TOKEN: access_token,
             });
@@ -84,6 +84,16 @@ router.post("/api/signin", (req, res) => {
 //     }
 //   });
 // });
+
+// user 데이터 가져오기
+router.get("/api/userdata", async (req, res) => {
+  try {
+    const userData = await User.findOne(req.body.id);
+    res.json(userData);
+  } catch (err) {
+    console.error(err);
+  }
+});
 
 // 게시판 등록
 router.post("/api/board", async (req, res) => {

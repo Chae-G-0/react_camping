@@ -38,6 +38,7 @@ app.get("/", function (req, res) {
 // auth
 app.post("/api/signup", router);
 app.post("/api/signin", router);
+app.get("/api/userdata", router)
 // app.post("/api/verify", router);
 
 // board

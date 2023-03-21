@@ -11,11 +11,7 @@ mongoose
   .catch((err) => console.log(err));
 
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    maxlength: 10,
-  },
-  email: {
+  id: {
     type: String,
     trim: true,
     unique: 1,

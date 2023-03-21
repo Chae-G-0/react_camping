@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import authData, { ISLOGIN } from "../../store/loginSlice";
+import userData, { ISLOGIN } from "../../store/loginSlice";
 
 const SignInBox = styled.div`
   width: 400px;
@@ -45,7 +45,7 @@ const SignIn = () => {
   const pwInput = useRef();
   const navigate = useNavigate();
   const [loginForm, setLoginForm] = useState({
-    email: "",
+    id: "",
     password: "",
   });
 
@@ -57,7 +57,7 @@ const SignIn = () => {
   };
 
   const handleSubmit = () => {
-    if (loginForm.email.length < 1) {
+    if (loginForm.id.length < 1) {
       idInput.current.focus();
       return;
     }
@@ -71,7 +71,7 @@ const SignIn = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     const userInfo = {
-      email: loginForm.email,
+      id: loginForm.id,
       password: loginForm.password,
     };
     try {
@@ -94,14 +94,13 @@ const SignIn = () => {
   return (
     <SignInBox>
       <h2>로그인 페이지</h2>
-      <label htmlFor="email">아이디</label>
+      <label htmlFor="id">아이디</label>
       <input
-        id="email"
+        id="id"
         ref={idInput}
-        placeholder="이메일를 입력해 주세요."
+        placeholder="아이디를 입력해 주세요."
         onChange={(e) => {
           handleLogInState(e);
-          console.log();
         }}
       />
       <label htmlFor="password">비밀번호</label>

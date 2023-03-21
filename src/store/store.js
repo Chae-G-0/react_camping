@@ -1,6 +1,8 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { combineReducers, configureStore, createSlice } from "@reduxjs/toolkit";
 import boardSlice from "./boardSlice";
-import loginSlice from "./loginSlice"
+import loginSlice from "./loginSlice";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
 
 const NOTICE = createSlice({
   name: "NOTICE",
@@ -58,11 +60,20 @@ const NOTICE = createSlice({
   ],
 });
 
+const reducers = combineReducers({
+  NOTICE: NOTICE.reducer,
+  board: boardSlice,
+  login: loginSlice,
+});
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["login"],
+};
+
+const PersistReducer = persistReducer(persistConfig, reducers);
+
 export default configureStore({
-  reducer: {
-    NOTICE: NOTICE.reducer,
-    login: loginSlice,
-    logout: loginSlice,
-    boardSlice: boardSlice,
-  },
+  reducer: PersistReducer,
 });
