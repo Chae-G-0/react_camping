@@ -40,7 +40,7 @@ const SignInBox = styled.div`
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const isLoginState = useSelector((state) => state.login.isLoginState);
+  // const isLoginState = useSelector((state) => state.login.isLoginState);
   const idInput = useRef();
   const pwInput = useRef();
   const navigate = useNavigate();

@@ -7,7 +7,7 @@ import "../../style/board.scss";
 const BDitem = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const boardlist = useSelector((state) => state.boardSlice.list);
+  const boardlist = useSelector((state) => state.board.list);
   const dispatch = useDispatch();
   const filterItem = [...boardlist].filter(
     (it) => parseInt(it.id) === parseInt(id)

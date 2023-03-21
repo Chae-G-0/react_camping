@@ -55,8 +55,6 @@ const Write = () => {
     return navigate("/board", { replace: true });
   };
 
-  console.log(id);
-
   return (
     <section className="Write">
       <div className="inner BoardList">

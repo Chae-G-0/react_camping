@@ -5,7 +5,7 @@ import { boardData } from "../../store/boardSlice";
 import "../../style/board.scss";
 
 const BDList = () => {
-  const boardList = useSelector((state) => state.boardSlice.list);
+  const boardList = useSelector((state) => state.board.list);
   const dispatch = useDispatch();
 
   useEffect(() => {
