@@ -5,9 +5,8 @@ import "../style/main.scss";
 
 const SLIDER = [
   { id: 1, content: "camping" },
-  { id: 2, content: "지역별 캠핑장 검색" },
-  { id: 3, content: "테마별 캠핑장 검색" },
-  { id: 4, content: "테마별 캠핑장 검색" },
+  { id: 2, content: "지역별 캠핑장 알아보기" },
+  { id: 3, content: "캠핑 정보를 한 곳에서" },
 ];
 
 const MainVisual = () => {
@@ -17,6 +16,8 @@ const MainVisual = () => {
     setIDX(0);
   }, []);
   const setting = {
+    vertical: true,
+    verticalSwiping: true,
     arrows: false,
     autoplay: 1,
     pauseOnFocus: false,
@@ -25,21 +26,17 @@ const MainVisual = () => {
   };
   return (
     <section className="MainVisual">
-      <Slider {...setting} ref={mainSlide}>
-        {SLIDER.map((it, idx) => {
-          return (
-            <figure
-              key={it.id}
-              ref={mainSlide}
-              className={"item0" + it.id + (idx === IDX ? " on" : "")}
-            >
-              <div className="inner">
-                <h2>{it.content}</h2>
+      <figure className="backImg">
+        <Slider {...setting} ref={mainSlide}>
+          {SLIDER.map((it, idx) => {
+            return (
+              <div className={`mainSlide item0` + it.id + (idx === IDX ? " on" : "")} key={it.id} ref={mainSlide} >
+                  <h2>{it.content}</h2>
               </div>
-            </figure>
-          );
-        })}
-      </Slider>
+            );
+          })}
+        </Slider>
+      </figure>
     </section>
   );
 };

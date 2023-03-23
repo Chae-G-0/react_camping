@@ -13,28 +13,24 @@
         
         figure {
             position: relative;
-            height: 750px;
-            background-position: bottom center;
+            height: 600px;
+            background-image: url(../../public/assets/MainVisual01.jpg);
+            background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            
+            .mainSlide {
+                
+                    h2 {
+                        position: absolute;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 35px;
+                        font-weight: 500;
+                        color: #fff;
+                    }
+                }
         }
 
-        .inner {
-            width: 1200px;
-            h2 {
-                position: absolute;
-                top: 50%;
-                transform: translate(0, -50%);
-                font-size: 40px;
-                font-weight: 700;
-                color: #ddd;
-            }
-        }
-
-        @for $i from 1 through 4 {
-            .item0#{$i} {
-                background-image: url(../../public/assets/MainVisual0#{$i}.jpg);
-            }
-        }
     }
 }

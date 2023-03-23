@@ -17,22 +17,6 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 //   }
 // );
 
-// const signUpAsync = createAsyncThunk(
-//   "/signUpAsync",
-//   async (userInfo, { rejectWithValue }) => {
-//     try {
-//       const res = await axios.post("/api/signup", {
-//         name: userInfo.name,
-//         email: userInfo.email,
-//         password: userInfo.password,
-//       });
-//       return { ...res.data, name: `${userInfo.name}` };
-//     } catch (err) {
-//       return rejectWithValue(err.res.data);
-//     }
-//   }
-// );
-
 const initialState = {
   id: "",
   isLoginState: false,

@@ -28,20 +28,13 @@ const HeaderStyle = styled.header`
     font-size: 17px;
   }
   .auth {
-    flex: 1;
-    text-align: end;
-  }
-  .isLogin {
     display: flex;
     gap: 30px;
     flex: 1;
     justify-content: flex-end;
 
-    button {
-      background: none;
-      border: none;
+    .logout {
       cursor: pointer;
-      line-height: 100px;
     }
   }
 `;
@@ -79,24 +72,26 @@ const Header = () => {
           <NavLink to="/">Camping</NavLink>
         </h1>
         {isLoginState.payload ? (
-          <ul className="isLogin">
+          <ul className="auth">
             <li>
               <NavLink to="/mypage">마이페이지</NavLink>
             </li>
-            <li>
-              <button
-                onClick={() => {
-                  handlelogout();
-                }}
-              >
-                로그아웃
-              </button>
+            <li
+              className="logout"
+              onClick={() => {
+                handlelogout();
+              }}
+            >
+              로그아웃
             </li>
           </ul>
         ) : (
           <ul className="auth">
             <li>
               <NavLink to="/signin">로그인</NavLink>
+            </li>
+            <li>
+              <NavLink to="/signup">회원가입</NavLink>
             </li>
           </ul>
         )}
