@@ -84,8 +84,9 @@ const Detail = ({ campingData }) => {
               </div>
             </div>
             <div className="facInfo">
-              <h4>캠핑장 부대시설 정보</h4>
+              <h4>캠핑장 시설 정보</h4>
               <p>{it.sbrsCl}</p>
+              <p>화장실 개수 : {it.toiletCo}</p>
               <p>애견 동반 : {it.animalCmgCl}</p>
               <p>
                 개인 트레일러 사용 :
@@ -94,6 +95,29 @@ const Detail = ({ campingData }) => {
               <p>
                 개인 카라반 사용 :{it.caravAcmpnyAt === "Y" ? "가능" : "불가능"}
               </p>
+              <p>소화기 개수 :{it.extshrCo}</p>
+            </div>
+            <div className="siteBottom">
+              <div className="bottom">
+                <span>잔디</span>
+                <p>{it.siteBottomCl1}</p>
+              </div>
+              <div className="bottom">
+                <span>파쉐석</span>
+                <p>{it.siteBottomC2}</p>
+              </div>
+              <div className="bottom">
+                <span>테크</span>
+                <p>{it.siteBottomCl3}</p>
+              </div>
+              <div className="bottom">
+                <span>자갈</span>
+                <p>{it.siteBottomCl4}</p>
+              </div>
+              <div className="bottom">
+                <span>맨흙</span>
+                <p>{it.siteBottomCl5}</p>
+              </div>
             </div>
           </div>
         );

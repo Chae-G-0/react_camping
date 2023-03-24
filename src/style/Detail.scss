@@ -85,6 +85,8 @@
             border: 1px solid #ddd;
             border-radius: 15px;
             padding: 20px;
+            margin: 0 0 50px 0;
+
             h4 {
                 font-size: 19px;
                 font-weight: 700;
@@ -97,6 +99,29 @@
                 margin: 0 0 10px 0;
             }
         }
+
+        .siteBottom {
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 0 0 50px 0;
+            display: flex;
+            justify-content: space-between;
+
+            .bottom {
+                text-align: center;
+
+                span {
+                    font-size: 17px;
+                    font-weight: 500;
+                }
+
+                p {
+                    font-size: 21;
+                    font-weight: 700;
+                }
+            }
+
+        }
     }
-    
 }
