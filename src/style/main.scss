@@ -9,6 +9,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            position: relative;
 
             .container {
                 width: 1200px;
@@ -18,11 +19,23 @@
                     height: 600px;
     
                     h2 {
-                        line-height: 500px;
-                        font-size: 35px;
+                        line-height: 350px;
+                        font-size: 45px;
                         font-weight: 700;
                         color: #f7f7f7;
                     }   
+                }
+
+                .slideArrows {
+                    position: absolute;
+                    top: 45%;
+
+                    button {
+                        border: none;
+                        background: none;
+                        font-size: 27px;
+                        color: #f7f7f7;
+                    }
                 }
             }
             

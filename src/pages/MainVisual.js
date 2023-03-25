@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../style/main.scss";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 const SLIDER = [
   { id: 1, content: "Camping" },
@@ -21,7 +22,7 @@ const MainVisual = () => {
     verticalSwiping: true,
     arrows: false,
     autoplay: 1,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 4000,
     pauseOnFocus: false,
     pauseOnHover: true,
     afterChange: (idx) => setIDX(idx),
@@ -45,6 +46,14 @@ const MainVisual = () => {
               );
             })}
           </Slider>
+          <div className="slideArrows">
+            <button onClick={() => mainSlide.current.slickPrev()}>
+              <FiArrowLeft />
+            </button>
+            <button onClick={() => mainSlide.current.slickNext()}>
+              <FiArrowRight />
+            </button>
+          </div>
         </div>
       </figure>
     </section>
