@@ -55,6 +55,7 @@ router.post("/api/signin", (req, res) => {
             const access_token = createJWT(req.body.id);
             res.json({
               ACCESS_TOKEN: access_token,
+              id: req.body.id,
             });
           }
         });

@@ -12,6 +12,7 @@ const Write = () => {
     title: "",
     content: "",
   });
+  const userId = localStorage.getItem("userId");
 
   const handleBoardState = (e) => {
     setBoardForm({
@@ -25,6 +26,7 @@ const Write = () => {
   const handleBoard = async () => {
     const boardInfo = {
       id: id.current,
+      author: userId,
       title: boardForm.title,
       content: boardForm.content,
       date: boardForm.date,

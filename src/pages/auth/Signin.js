@@ -77,6 +77,7 @@ const SignIn = () => {
     try {
       const res = await axios.post("/api/signin", userInfo);
       localStorage.setItem("access_token", res.data.ACCESS_TOKEN);
+      localStorage.setItem("userId", res.data.id);
       // dispatch(authData(res.data.ACCESS_TOKEN));
       if (res.status === 200) {
         dispatch(ISLOGIN(true));

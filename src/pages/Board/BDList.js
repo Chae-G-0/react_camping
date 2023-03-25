@@ -37,7 +37,7 @@ const BDList = () => {
                 <td className="tit">
                   <Link to={`/boarditem/${it.id}`}>{it.title}</Link>
                 </td>
-                <td>작성자</td>
+                <td>{it.author}</td>
                 <td>{it.date}</td>
               </tr>
             );
