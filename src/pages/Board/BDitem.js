@@ -9,9 +9,7 @@ const BDitem = () => {
   const { id } = useParams();
   const boardlist = useSelector((state) => state.board.list);
   const dispatch = useDispatch();
-  const filterItem = [...boardlist].filter(
-    (it) => parseInt(it.id) === parseInt(id)
-  );
+  const filterItem = boardlist.filter((it) => parseInt(it.id) === parseInt(id));
 
   useEffect(() => {
     dispatch(boardData());
@@ -34,7 +32,13 @@ const BDitem = () => {
         <div className="itembtn">
           <button>수정하기</button>
           <button>삭제하기</button>
-          <button onClick={() => { navigate("/board") }}>목록으로</button>
+          <button
+            onClick={() => {
+              navigate("/board");
+            }}
+          >
+            목록으로
+          </button>
         </div>
       </div>
     </section>

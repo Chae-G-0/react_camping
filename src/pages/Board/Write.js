@@ -1,6 +1,7 @@
-import axios from "axios";
 import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { boardWrite } from "../../store/boardSlice";
 import "../../style/board.scss";
 
 const Write = () => {
@@ -8,6 +9,7 @@ const Write = () => {
   const titleInput = useRef();
   const contentInput = useRef();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [boardForm, setBoardForm] = useState({
     title: "",
     content: "",
@@ -17,7 +19,6 @@ const Write = () => {
   const handleBoardState = (e) => {
     setBoardForm({
       ...boardForm,
-      id: id.current,
       [e.target.name]: e.target.value,
       date: new Date().toLocaleDateString(),
     });
@@ -31,17 +32,7 @@ const Write = () => {
       content: boardForm.content,
       date: boardForm.date,
     };
-    id.current += 1;
-    try {
-      const res = await axios.post("/api/board", boardInfo);
-      if (res.status === 200) {
-        console.log("등록 됨!");
-        alert("게시글이 등록되었습니다.");
-        return;
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(boardWrite(boardInfo));
   };
 
   const handleSubmit = () => {

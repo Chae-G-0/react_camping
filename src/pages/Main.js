@@ -7,7 +7,7 @@ const Main = () => {
     <main className="Main">
       <MainVisual />
       <section className="mainComtent">
-        <div className="inner">maincomtent</div>
+        <div className="inner">mainContent</div>
       </section>
     </main>
   );
