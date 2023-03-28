@@ -5,7 +5,6 @@ import { boardWrite } from "../../store/boardSlice";
 import "../../style/board.scss";
 
 const Write = () => {
-  const id = useRef(1);
   const titleInput = useRef();
   const contentInput = useRef();
   const navigate = useNavigate();
@@ -26,7 +25,6 @@ const Write = () => {
 
   const handleBoard = async () => {
     const boardInfo = {
-      id: id.current,
       author: userId,
       title: boardForm.title,
       content: boardForm.content,

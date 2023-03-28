@@ -14,10 +14,11 @@ const boardWrite = createAsyncThunk(
   "boardSlice/boardWrite",
   async (boardInfo, { getState }) => {
     const { list } = getState().board;
-    const maxId = Math.max(list.map((it) => it.id));
-    console.log(maxId);
+    const maxId = list.reduce(
+      (max, post) => (post.id > max ? post.id : max),
+      0
+    );
     nextPostId = maxId + 1;
-    console.log(nextPostId);
     try {
       const res = await axios.post("/api/board", {
         ...boardInfo,
