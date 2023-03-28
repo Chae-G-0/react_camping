@@ -120,20 +120,22 @@ section {
         }
     }
 
-    .itembtn {
-        display: flex;
-        justify-content: end;
-        gap: 10px;
-        padding: 50px 0 0 0;
-        text-align: right;
-    
-        button {
-            border: 1px solid #ced4da;
-            padding: 7px 20px;
-            background: #f8f9fa;
-            font-size: 15px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
+}
+.itembtn {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    padding: 50px 0 0 0;
+    text-align: right;
+
+    button {
+        border: 1px solid #ced4da;
+        padding: 7px 20px;
+        background: #f8f9fa;
+        font-size: 15px;
+        border-radius: 3px;
+        cursor: pointer;
     }
 }

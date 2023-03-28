@@ -112,4 +112,14 @@ router.get("/api/boardlist", async (req, res) => {
   }
 });
 
+router.put("/api/boardupdate", (req, res) => {
+  const dataId = { "id": req.body.id }
+  Board.updateOne(dataId, req.body)
+});
+
+router.delete("/api/boarddelete", (req, res) => {
+  const data = { "id": req.body.id }
+  Board.deleteOne(data)
+});
+
 module.exports = router;

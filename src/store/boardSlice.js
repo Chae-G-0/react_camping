@@ -35,6 +35,16 @@ const boardWrite = createAsyncThunk(
   }
 );
 
+const boardEdit = createAsyncThunk("boardSlice/boardEdit", async () => {
+  const res = await axios.put("/api/boardupdate");
+  return res.data;
+});
+
+const boardDelete = createAsyncThunk("boardSlice/boardDelete", async () => {
+  const res = await axios.delete("/api/boarddelete");
+  return res
+});
+
 const boardSlice = createSlice({
   name: "boardSlice",
   initialState: { list: [] },
@@ -45,7 +55,7 @@ const boardSlice = createSlice({
       return state;
     });
     builder.addCase(boardData.fulfilled, (state, action) => {
-      console.log("complete get data");
+      // console.log("complete get data");
       state.list = action.payload;
     });
     builder.addCase(boardData.rejected, (state, action) => {
@@ -62,4 +72,4 @@ const boardSlice = createSlice({
 export default boardSlice.reducer;
 // export const { IDINCREASE } = boardSlice.actions;
 
-export { boardData, boardWrite };
+export { boardData, boardWrite, boardEdit, boardDelete };
