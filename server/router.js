@@ -113,9 +113,9 @@ router.get("/api/boardlist", async (req, res) => {
 });
 
 // 게시글 수정
-router.put("/api/boardupdate", (req, res) => {
+router.put("/api/boardupdate", async (req, res) => {
   const dataId = { _id: req.body._id };
-  Board.updateOne(dataId, req.body);
+  await Board.updateOne(dataId, req.body);
 });
 
 // 게시글 삭제

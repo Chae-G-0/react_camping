@@ -19,6 +19,8 @@ const BDitem = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [editTitle, setEditTitle] = useState(title);
   const [editContent, setEditContent] = useState(content);
+  const editInfo = [_id, editTitle, editContent];
+
   const toggleEdit = () => setIsEdit(!isEdit);
 
   // 게시글 수정
@@ -31,11 +33,6 @@ const BDitem = () => {
       contentEditInput.current.focus();
       return;
     }
-    const editInfo = {
-      _id,
-      editTitle,
-      editContent,
-    };
     dispatch(boardEdit(editInfo));
     toggleEdit();
   };

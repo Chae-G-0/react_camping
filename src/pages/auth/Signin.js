@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ISLOGIN } from "../../store/loginSlice";
 
@@ -40,9 +40,10 @@ const SignInBox = styled.div`
 
 const SignIn = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
   const idInput = useRef();
   const pwInput = useRef();
-  const navigate = useNavigate();
   const [loginForm, setLoginForm] = useState({
     id: "",
     password: "",
@@ -64,7 +65,11 @@ const SignIn = () => {
       pwInput.current.focus();
       return;
     }
-    navigate("/", { replace: true });
+    if (location.state !== null) {
+      navigate(location.state.locate)
+    } else {
+      navigate("/", { replace: true });
+    }
   };
 
   const handleLogin = async (e) => {
