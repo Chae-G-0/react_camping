@@ -112,14 +112,15 @@ router.get("/api/boardlist", async (req, res) => {
   }
 });
 
+// 게시글 수정
 router.put("/api/boardupdate", (req, res) => {
-  const dataId = { "id": req.body.id }
-  Board.updateOne(dataId, req.body)
+  const dataId = { _id: req.body._id };
+  Board.updateOne(dataId, req.body);
 });
 
-router.delete("/api/boarddelete", (req, res) => {
-  const data = { "id": req.body.id }
-  Board.deleteOne(data)
+// 게시글 삭제
+router.delete("/api/boarddelete", async (req, res) => {
+  await Board.deleteOne({_id: req.body._id});
 });
 
 module.exports = router;

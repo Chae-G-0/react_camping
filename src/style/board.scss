@@ -119,8 +119,28 @@ section {
             border-bottom: 1px solid #ddd;
         }
     }
-
 }
+
+.EditItem {
+    display: flex;
+    flex-direction: column;
+
+    .tit {
+        background: #f7f7f7;
+        border: none;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 20px;
+    }
+
+    .content {
+        padding: 20px;
+        font-size: 15px;
+        font-weight: 500;
+        border-bottom: 1px solid #ddd;
+    }
+}
+
 .itembtn {
     width: 1200px;
     margin: 0 auto;

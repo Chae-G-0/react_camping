@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import userData, { ISLOGIN } from "../../store/loginSlice";
+import { ISLOGIN } from "../../store/loginSlice";
 
 const SignInBox = styled.div`
   width: 400px;
@@ -40,7 +40,6 @@ const SignInBox = styled.div`
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  // const isLoginState = useSelector((state) => state.login.isLoginState);
   const idInput = useRef();
   const pwInput = useRef();
   const navigate = useNavigate();
@@ -78,7 +77,6 @@ const SignIn = () => {
       const res = await axios.post("/api/signin", userInfo);
       localStorage.setItem("access_token", res.data.ACCESS_TOKEN);
       localStorage.setItem("userId", res.data.id);
-      // dispatch(authData(res.data.ACCESS_TOKEN));
       if (res.status === 200) {
         dispatch(ISLOGIN(true));
         handleSubmit();

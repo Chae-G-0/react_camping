@@ -10,6 +10,7 @@ const BDitem = () => {
   const dispatch = useDispatch();
   const boardlist = useSelector((state) => state.board.list);
   const filterItem = boardlist.filter((it) => it.id === parseInt(id));
+  const _id = filterItem[0]._id;
   const title = filterItem[0].title;
   const content = filterItem[0].content;
 
@@ -30,7 +31,12 @@ const BDitem = () => {
       contentEditInput.current.focus();
       return;
     }
-    dispatch(boardEdit());
+    const editInfo = {
+      _id,
+      editTitle,
+      editContent,
+    };
+    dispatch(boardEdit(editInfo));
     toggleEdit();
   };
 
@@ -41,6 +47,13 @@ const BDitem = () => {
     setEditContent(content);
   };
 
+  // 게시글 삭제
+  const handleDelete = () => {
+    window.confirm("해당 게시글을 삭제하시겠습니까?");
+    dispatch(boardDelete(_id));
+    navigate("/board", { replace: true });
+  };
+
   useEffect(() => {
     dispatch(boardData());
   }, [id]);
@@ -48,9 +61,21 @@ const BDitem = () => {
   return (
     <section>
       {isEdit ? (
-        <div className="inner Edit">
-          <input ref={titleEditInput} />
-          <input ref={contentEditInput} />
+        <div className="inner EditItem">
+          <div className="tit">
+            <input
+              ref={titleEditInput}
+              value={editTitle}
+              onChange={(e) => setEditTitle(e.target.value)}
+            />
+          </div>
+          <div className="content">
+            <input
+              ref={contentEditInput}
+              value={editContent}
+              onChange={(e) => setEditContent(e.target.value)}
+            />
+          </div>
         </div>
       ) : (
         <div className="inner BDitem">
@@ -75,7 +100,7 @@ const BDitem = () => {
       ) : (
         <div className="itembtn">
           <button onClick={toggleEdit}>수정하기</button>
-          <button onClick={() => dispatch(boardDelete())}>삭제하기</button>
+          <button onClick={handleDelete}>삭제하기</button>
           <button
             onClick={() => {
               navigate("/board");
