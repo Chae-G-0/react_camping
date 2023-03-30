@@ -13,6 +13,8 @@ const BDitem = () => {
   const _id = filterItem[0]._id;
   const title = filterItem[0].title;
   const content = filterItem[0].content;
+  const author = filterItem[0].author;
+  const userId = localStorage.getItem("userId")
 
   const titleEditInput = useRef();
   const contentEditInput = useRef();
@@ -33,6 +35,7 @@ const BDitem = () => {
       contentEditInput.current.focus();
       return;
     }
+    window.confirm("게시글을 수정하시겠습니까?");
     dispatch(boardEdit(editInfo));
     toggleEdit();
   };
@@ -89,15 +92,27 @@ const BDitem = () => {
           })}
         </div>
       )}
-      {isEdit ? (
-        <div className="itembtn">
-          <button onClick={handleEdit}>수정완료</button>
-          <button onClick={handleQuitEdit}>수정취소</button>
-        </div>
+      {author === userId ? (
+        isEdit ? (
+          <div className="itembtn">
+            <button onClick={handleEdit}>수정완료</button>
+            <button onClick={handleQuitEdit}>수정취소</button>
+          </div>
+        ) : (
+          <div className="itembtn">
+            <button onClick={toggleEdit}>수정하기</button>
+            <button onClick={handleDelete}>삭제하기</button>
+            <button
+              onClick={() => {
+                navigate("/board");
+              }}
+            >
+              목록으로
+            </button>
+          </div>
+        )
       ) : (
         <div className="itembtn">
-          <button onClick={toggleEdit}>수정하기</button>
-          <button onClick={handleDelete}>삭제하기</button>
           <button
             onClick={() => {
               navigate("/board");

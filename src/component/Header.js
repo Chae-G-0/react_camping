@@ -47,6 +47,7 @@ const Header = () => {
 
   const handlelogout = () => {
     localStorage.removeItem("access_token");
+    localStorage.removeItem("userId");
     dispatch(ISLOGIN(false));
     alert("로그아웃 되었습니다.");
     if (location.state !== null) {

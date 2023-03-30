@@ -1,7 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { addItem } from "../store/mypageSlice";
 import "../style/Detail.scss";
 
 const NoImg = styled.div`
@@ -21,6 +23,13 @@ const Detail = ({ campingData }) => {
   const detail = campingData.filter(
     (it) => parseInt(id) === parseInt(it.contentId)
   );
+  const dispatch = useDispatch();
+
+  const handleBookmark = () => {
+    dispatch(addItem(detail[0].facltNm));
+    alert("즐겨찾기에 저장됐습니다.")
+  };
+  
   useEffect(() => {
     setDetailInfo(detail);
   }, [id]);
@@ -80,7 +89,7 @@ const Detail = ({ campingData }) => {
                     </tr>
                   </tbody>
                 </table>
-                <button>즐겨찾기 등록</button>
+                <button onClick={handleBookmark}>즐겨찾기 등록</button>
               </div>
             </div>
             <div className="facInfo">
@@ -103,7 +112,7 @@ const Detail = ({ campingData }) => {
                 <p>{it.siteBottomCl1}</p>
               </div>
               <div className="bottom">
-                <span>파쉐석</span>
+                <span>파쇄석</span>
                 <p>{it.siteBottomC2}</p>
               </div>
               <div className="bottom">

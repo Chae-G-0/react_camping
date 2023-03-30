@@ -30,7 +30,7 @@ router.post("/api/signup", async (req, res) => {
     .update(req.body.password)
     .digest("base64");
   await User.insertMany(req.body);
-  res.send("signup");
+  console.log("회원가입 완료");
 });
 
 // 로그인
@@ -42,13 +42,12 @@ router.post("/api/signin", (req, res) => {
       .update(req.body.password)
       .digest("base64"),
   };
-  const Auth = Object.assign(id, password);
   User.findOne(id)
     .then((result) => {
       if (result === null) {
         res.status(404).send(console.log("아이디 불일치"));
       } else {
-        User.findOne(Auth).then((result) => {
+        User.findOne(password).then((result) => {
           if (result === null) {
             res.status(400).send(console.log("비밀번호 불일치"));
           } else {
@@ -120,7 +119,7 @@ router.put("/api/boardupdate", async (req, res) => {
 
 // 게시글 삭제
 router.delete("/api/boarddelete", async (req, res) => {
-  await Board.deleteOne({_id: req.body._id});
+  await Board.deleteOne({ _id: req.body._id });
 });
 
 module.exports = router;

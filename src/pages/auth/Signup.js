@@ -43,10 +43,6 @@ const SignUp = () => {
   });
   const [btnDisabled, setBtnDisabled] = useState(true);
 
-  // const regx = new RegExp(
-  //   /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
-  // );
-
   const handleSignUpState = (e) => {
     setSignUpForm({
       ...signUpForm,
@@ -54,19 +50,19 @@ const SignUp = () => {
     });
   };
 
-  const handleSignup = async (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
     const userInfo = {
       id: signUpForm.id,
       password: signUpForm.password,
     };
     try {
-      axios.post("http://localhost:8080/api/signup", userInfo);
+      axios.post("/api/signup", userInfo);
       alert("회원가입이 완료되었습니다.");
       navigate("/signin", { replace: true });
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        alert("이미 사용중인 이메일입니다.");
+        alert("이미 사용중인 아이디입니다.");
         signUpForm.email("");
         return;
       }

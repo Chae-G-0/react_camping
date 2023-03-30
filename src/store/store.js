@@ -3,6 +3,7 @@ import boardSlice from "./boardSlice";
 import loginSlice from "./loginSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
+import mypageSlice from "./mypageSlice";
 
 const NOTICE = createSlice({
   name: "NOTICE",
@@ -64,12 +65,13 @@ const reducers = combineReducers({
   NOTICE: NOTICE.reducer,
   board: boardSlice,
   login: loginSlice,
+  mypage: mypageSlice,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["login", "board"],
+  whitelist: ["login", "board", "mypage"],
 };
 
 const PersistReducer = persistReducer(persistConfig, reducers);

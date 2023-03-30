@@ -1,6 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { deleteItem } from "../store/mypageSlice";
 import "../style/mypage.scss";
 
 const NotLogin = styled.div`
@@ -13,8 +14,11 @@ const NotLogin = styled.div`
 `;
 
 const Mypage = () => {
-  const isLoginState = useSelector((state) => state.login.isLoginState);
   const userId = localStorage.getItem("userId");
+  const isLoginState = useSelector((state) => state.login.isLoginState);
+  const bookMark = useSelector((state) => state.mypage);
+  const dispatch = useDispatch();
+
   return (
     <section className="Mypage">
       {isLoginState ? (
@@ -23,6 +27,23 @@ const Mypage = () => {
           <div className="flexBox">
             <div className="mark">
               <h3>즐겨찾기</h3>
+              <div>
+                {bookMark.map((it, idx) => {
+                  return (
+                    <div key={idx}>
+                      <p>{it}</p>
+                      <button
+                        onClick={() => {
+                          window.confirm("즐겨찾기를 해제하시겠습니까?");
+                          dispatch(deleteItem(it));
+                        }}
+                      >
+                        해제
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
             <div className="myWrite">
               <h3>내가 쓴 글</h3>

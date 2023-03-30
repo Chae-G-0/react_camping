@@ -85,12 +85,16 @@ const SignIn = () => {
       if (res.status === 200) {
         dispatch(ISLOGIN(true));
         handleSubmit();
-        return console.log("Login!!!");
+        return;
       }
     } catch (error) {
       if (error.response && error.response.status === 404) {
         alert("존재하지 않는 아이디입니다.");
-        return console.log(error);
+        return;
+      }
+      if (error.response && error.response.status === 400) {
+        alert("비밀번호가 일치하지 않습니다.");
+        return;
       }
     }
   };
