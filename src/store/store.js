@@ -1,8 +1,16 @@
 import { combineReducers, configureStore, createSlice } from "@reduxjs/toolkit";
+import {
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist'
 import boardSlice from "./boardSlice";
 import loginSlice from "./loginSlice";
 import storage from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
 import mypageSlice from "./mypageSlice";
 
 const NOTICE = createSlice({
@@ -78,4 +86,10 @@ const PersistReducer = persistReducer(persistConfig, reducers);
 
 export default configureStore({
   reducer: PersistReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
