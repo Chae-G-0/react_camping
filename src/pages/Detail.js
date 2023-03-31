@@ -20,16 +20,16 @@ const NoImg = styled.div`
 const Detail = ({ campingData }) => {
   const { id } = useParams();
   const [detailInfo, setDetailInfo] = useState([]);
+  const dispatch = useDispatch();
   const detail = campingData.filter(
     (it) => parseInt(id) === parseInt(it.contentId)
   );
-  const dispatch = useDispatch();
 
   const handleBookmark = () => {
     dispatch(addItem(detail[0].facltNm));
-    alert("즐겨찾기에 저장됐습니다.")
+    alert("즐겨찾기에 저장되었습니다.")
   };
-  
+
   useEffect(() => {
     setDetailInfo(detail);
   }, [id]);

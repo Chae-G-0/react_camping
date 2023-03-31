@@ -8,29 +8,47 @@
         h2 {
             margin: 0 0 50px 0;
         }
-
         .flexBox {
             display: flex;
-            gap: 30px;
+            gap: 50px;
 
             h3 {
                 text-align: center;
                 font-size: 19px;
                 font-weight: 500;
-                margin: 0 0 30px 0;
+                margin: 0 0 50px 0;
             }
 
-            div {
-                flex: 1;
-                padding: 30px;
-            }
             .mark {
+                flex: 1;
                 border: 1px solid #ddd;
+                padding: 50px;
                 
+                .bookMark {
+                    display: flex;
+                    justify-content: space-between;
+                    vertical-align: middle;
+
+                    p {
+                        font-size: 17px;
+                        font-weight: 500;
+                        margin: 0 0 50px 0;
+                    }
+
+                    button {
+                        background: none;
+                        border: 1px solid #ddd;
+                        padding: 7px 20px;
+                        margin: 0 0 50px 0;
+                        cursor: pointer;
+                    }
+                }
             }
 
             .myWrite {
+                flex: 1;
                 border: 1px solid #ddd;
+                padding: 50px;
             }
         }
     }

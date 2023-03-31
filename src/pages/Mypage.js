@@ -30,7 +30,7 @@ const Mypage = () => {
               <div>
                 {bookMark.map((it, idx) => {
                   return (
-                    <div key={idx}>
+                    <div key={idx} className="bookMark">
                       <p>{it}</p>
                       <button
                         onClick={() => {
@@ -38,7 +38,7 @@ const Mypage = () => {
                           dispatch(deleteItem(it));
                         }}
                       >
-                        해제
+                        삭제
                       </button>
                     </div>
                   );

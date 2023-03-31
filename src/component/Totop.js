@@ -11,6 +11,7 @@ const Btn = styled.div`
   color: #fff;
   background: #333;
   font-size: 30px;
+  line-height: 0;
   padding: 10px;
   border-radius: 50%;
   visibility: hidden;

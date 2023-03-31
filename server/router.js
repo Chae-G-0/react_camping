@@ -65,26 +65,6 @@ router.post("/api/signin", (req, res) => {
     });
 });
 
-// 토큰 검증
-
-// router.post("/api/verify", (req, res) => {
-//   const token = req.headers.Authorization;
-//   jwt.verify(token, "secretKey", (err, decode) => {
-//     if (err) {
-//       console.log(err);
-//       res.json({
-//         RESULT: false,
-//         DATA: "none",
-//       });
-//     } else {
-//       res.json({
-//         RESULT: true,
-//         DATA: decode.email,
-//       });
-//     }
-//   });
-// });
-
 // user 데이터 가져오기
 router.get("/api/userdata", async (req, res) => {
   try {

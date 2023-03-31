@@ -6,6 +6,7 @@ import "../../style/board.scss";
 
 const BDList = () => {
   const boardList = useSelector((state) => state.board.list);
+  const boardView = [...boardList].reverse()
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,9 +31,9 @@ const BDList = () => {
         </tbody>
       ) : (
         <tbody>
-          {boardList.map((it, idx) => {
+          {boardView.map((it) => {
             return (
-              <tr key={idx}>
+              <tr key={it.id}>
                 <td>{it.id}</td>
                 <td className="tit">
                   <Link to={`/boarditem/${it.id}`}>{it.title}</Link>
