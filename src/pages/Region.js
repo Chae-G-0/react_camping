@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Camp from "../component/Camp";
 import Totop from "../component/Totop";

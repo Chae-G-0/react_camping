@@ -11,7 +11,7 @@ const Board = () => {
     if (token) {
       return navigate("/write");
     } else {
-      alert("로그인 후 이용할 수 있습니다.");
+      alert("로그인 후 이용하실 수 있습니다.");
       return;
     }
   };

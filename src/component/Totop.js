@@ -6,8 +6,8 @@ import { FiArrowUp } from "react-icons/fi";
 
 const Btn = styled.div`
   position: fixed;
-  bottom: 100px;
-  right: 100px;
+  bottom: 10%;
+  right: 5%;
   color: #fff;
   background: #333;
   font-size: 30px;
