@@ -55,7 +55,7 @@
 
     .mainContent {
         padding: 100px 0;
-
+        
         .inner {
             display: flex;
 
@@ -63,7 +63,7 @@
                 flex: 1;
 
                 h2 {
-                    font-size: 30px;
+                    font-size: 25px;
                     text-align: left;
                     margin: 0 0 10px 0;
                 }
@@ -91,6 +91,18 @@
                     }
                 }
 
+            }
+        }
+    }
+
+    .MainThema {
+        padding: 0 0 100px 0;
+
+        .inner {
+            h2 {
+                font-size: 25px;
+                text-align: left;
+                margin: 0 0 10px 0;
             }
         }
     }

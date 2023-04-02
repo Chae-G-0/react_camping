@@ -6,7 +6,7 @@ import Camp from "./component/Camp";
 import Header from "./component/Header";
 import Totop from "./component/Totop";
 import Detail from "./pages/Detail";
-import Main from "./pages/Main";
+import Main from "./pages/main/Main";
 import Region from "./pages/Region";
 import Signin from "./pages/auth/Signin";
 import Signup from "./pages/auth/Signup";
@@ -15,6 +15,7 @@ import Board from "./pages/Board/Board";
 import Write from "./pages/Board/Write";
 import Mypage from "./pages/Mypage";
 import BDitem from "./pages/Board/BDitem";
+import Footer from "./component/Footer";
 
 function App() {
   const [campingData, setCampingData] = useState([]);
@@ -58,6 +59,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/mypage" element={<Mypage />} />
       </Routes>
+      {/* <Footer /> */}
       <Totop />
     </div>
   );

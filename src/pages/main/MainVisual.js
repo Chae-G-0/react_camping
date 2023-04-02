@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../style/main.scss";
+import "../../style/main.scss";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 const SLIDER = [
