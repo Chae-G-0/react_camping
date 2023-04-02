@@ -5,8 +5,8 @@ import styled from "styled-components";
 import { ISLOGIN } from "../store/loginSlice";
 
 const HeaderStyle = styled.header`
-  height: 100px;
-  line-height: 100px;
+  height: 80px;
+  line-height: 80px;
   border-bottom: 1px solid #ddd;
 
   .container {
@@ -63,9 +63,6 @@ const Header = () => {
         <ul className="gnb">
           <li>
             <NavLink to="/region">지역별</NavLink>
-          </li>
-          <li>
-            <NavLink to="/thema">테마별</NavLink>
           </li>
           <li>
             <NavLink to="/notice">공지시항</NavLink>

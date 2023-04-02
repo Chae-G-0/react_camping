@@ -10,7 +10,6 @@ import Main from "./pages/Main";
 import Region from "./pages/Region";
 import Signin from "./pages/auth/Signin";
 import Signup from "./pages/auth/Signup";
-import Thema from "./pages/Thema";
 import Notice from "./pages/Notice";
 import Board from "./pages/Board/Board";
 import Write from "./pages/Board/Write";
@@ -51,7 +50,6 @@ function App() {
           path="/detail/:id"
           element={<Detail campingData={campingData} />}
         />
-        <Route path="/thema" element={<Thema campingData={campingData} />} />
         <Route path="/notice" element={<Notice />} />
         <Route path="/board" element={<Board />} />
         <Route path="/boarditem/:id" element={<BDitem />} />

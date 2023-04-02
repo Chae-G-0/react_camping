@@ -6,9 +6,21 @@ import "../style/main.scss";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 const SLIDER = [
-  { id: 1, content: "Camping" },
-  { id: 2, content: "지역별 캠핑장 알아보기" },
-  { id: 3, content: "캠핑 정보를 한 곳에서" },
+  {
+    id: 1,
+    content: "Camping",
+    des: "다양한 캠핑장 정보를 한눈에 확인해보세요",
+  },
+  {
+    id: 2,
+    content: "지역별 캠핑장 찾기",
+    des: "원하는 지역의 캠핑장을 찾아보세요",
+  },
+  {
+    id: 3,
+    content: "캠핑 정보를 한 곳에서",
+    des: "원활한 캠핑을 위해 꼭 필요한 사항은 해당 캠핑장에 미리 확인하시기 바랍니다",
+  },
 ];
 
 const MainVisual = () => {
@@ -42,6 +54,7 @@ const MainVisual = () => {
                   ref={mainSlide}
                 >
                   <h2>{it.content}</h2>
+                  <p>{it.des}</p>
                 </div>
               );
             })}

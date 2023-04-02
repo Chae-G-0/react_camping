@@ -1,14 +1,13 @@
 import React from "react";
 import "../style/main.scss";
 import MainVisual from "./MainVisual";
+import MainContent from "./MainContent";
 
 const Main = () => {
   return (
     <main className="Main">
       <MainVisual />
-      <section className="mainComtent">
-        <div className="inner">mainContent</div>
-      </section>
+      <MainContent />
     </main>
   );
 };

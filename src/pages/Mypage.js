@@ -24,29 +24,24 @@ const Mypage = () => {
       {isLoginState ? (
         <div className="inner">
           <h2>{userId}님의 마이페이지 입니다</h2>
-          <div className="flexBox">
-            <div className="mark">
-              <h3>즐겨찾기</h3>
-              <div>
-                {bookMark.map((it, idx) => {
-                  return (
-                    <div key={idx} className="bookMark">
-                      <p>{it}</p>
-                      <button
-                        onClick={() => {
-                          window.confirm("즐겨찾기를 해제하시겠습니까?");
-                          dispatch(deleteItem(it));
-                        }}
-                      >
-                        삭제
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className="myWrite">
-              <h3>내가 쓴 글</h3>
+          <div className="mark">
+            <h3>즐겨찾기</h3>
+            <div>
+              {bookMark.map((it, idx) => {
+                return (
+                  <div key={idx} className="bookMark">
+                    <p>{it}</p>
+                    <button
+                      onClick={() => {
+                        window.confirm("즐겨찾기를 해제하시겠습니까?");
+                        dispatch(deleteItem(it));
+                      }}
+                    >
+                      삭제
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

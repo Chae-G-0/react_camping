@@ -65,7 +65,7 @@ const BDList = () => {
         <thead>
           <tr>
             <th className="num">번호</th>
-            <th>제목</th>
+            <th className="title">제목</th>
             <th>작성자</th>
             <th>작성일자</th>
           </tr>

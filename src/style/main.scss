@@ -5,7 +5,7 @@
         
         figure {
             height: 600px;
-            background-image: url(../../public/assets/MainVisual01.jpg);
+            background-image: url(../../public/assets/MainVisual.jpg);
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -17,18 +17,30 @@
 
                 .mainSlide {
                     height: 600px;
-    
+                    padding: 250px 0;
+
                     h2 {
-                        line-height: 350px;
-                        font-size: 45px;
+                        font-size: 43px;
                         font-weight: 700;
                         color: #f7f7f7;
+                        margin: 0 0 20px 0;
                     }   
+
+                    p {
+                        font-size: 19px;
+                        font-weight: 300;
+                        color: #f7f7f7;
+                    }
+    
                 }
 
                 .slideArrows {
                     position: absolute;
-                    top: 45%;
+                    top: 65%;
+
+                    :first-child {
+                        margin: 0 30px 0 0;
+                    }
 
                     button {
                         border: none;
@@ -38,7 +50,48 @@
                     }
                 }
             }
-            
+        }
+    }
+
+    .mainContent {
+        padding: 100px 0;
+
+        .inner {
+            display: flex;
+
+            .titBox {
+                flex: 1;
+
+                h2 {
+                    font-size: 30px;
+                    text-align: left;
+                    margin: 0 0 10px 0;
+                }
+            }
+
+            .safeBox {
+                flex: 2;
+                
+                .txtBox {
+                    padding: 0 0 30px 0;
+
+                    p {
+                        font-size: 19px;
+                        margin: 0 0 15px 0;
+                    }
+    
+                    ul {
+                        font-size: 15px;
+                        font-weight: 300;
+    
+                        li {
+                            margin: 0 0 10px 0;
+                            white-space: pre-wrap;
+                        }
+                    }
+                }
+
+            }
         }
     }
 }
