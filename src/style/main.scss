@@ -104,6 +104,25 @@
                 text-align: left;
                 margin: 0 0 10px 0;
             }
+
+            p {
+                margin: 0 0 15px 0;
+            }
+
+            figure {
+                width: 100%;
+                height: 500px;
+                background-position: bottom center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+            }
+
+            @for $i from 1 through 3 {
+                .item0#{$i} {
+                    background-image: url(../../public/assets/sliderImg0#{$i}.jpg);
+                }
+            }
         }
     }
 }

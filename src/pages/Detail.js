@@ -1,8 +1,6 @@
-import React from "react";
-// import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-// import { addItem } from "../store/mypageSlice";
 import "../style/Detail.scss";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 
@@ -19,15 +17,16 @@ const NoImg = styled.div`
 
 const Detail = ({ campingData }) => {
   const { id } = useParams();
-  // const dispatch = useDispatch();
   const detail = campingData.filter(
     (it) => parseInt(id) === parseInt(it.contentId)
   );
 
-  // const handleBookmark = () => {
-  //   dispatch(addItem(detail[0].facltNm));
-  //   alert("즐겨찾기에 저장되었습니다.");
-  // };
+  const lat = detail[0].mapY;
+  const lng = detail[0].mapX;
+
+  useEffect(() => {
+    detail.lenght > 0 && <Map />;
+  }, [lat, lng]);
 
   return (
     detail && (
@@ -86,7 +85,6 @@ const Detail = ({ campingData }) => {
                       </tr>
                     </tbody>
                   </table>
-                  {/* <button onClick={handleBookmark}>즐겨찾기 등록</button> */}
                 </div>
               </div>
               <div className="facInfo">
@@ -125,22 +123,23 @@ const Detail = ({ campingData }) => {
                   </div>
                 </div>
               </div>
-              <Map
-                center={{
-                  lat: detail[0].mapX,
-                  lng: detail[0].mapY,
-                }}
-                style={{
-                  width: "1200px",
-                  height: "350px",
-                  border: "1px solid #ddd",
-                }}
-                level={3}
-              >
-                <MapMarker
-                  position={{ lat: detail[0].mapX, lng: detail[0].mapY }}
-                />
-              </Map>
+              <div className="map">
+                <h4>캠핑장 위치</h4>
+                <Map
+                  center={{
+                    lat: lat,
+                    lng: lng,
+                  }}
+                  style={{
+                    width: "1200px",
+                    height: "400px",
+                    border: "1px solid #ddd",
+                  }}
+                  level={3}
+                >
+                  <MapMarker position={{ lat: lat, lng: lng }} />
+                </Map>
+              </div>
             </div>
           );
         })}

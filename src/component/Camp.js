@@ -25,7 +25,10 @@ const PageIdx = styled.ul`
 
   .prev,
   .next {
+    border: none;
+    background: none;
     line-height: 0;
+    cursor: pointer;
   }
 
   li {
@@ -53,7 +56,7 @@ const Camp = ({ campingData }) => {
   const [itemList, setItemList] = useState();
   const [pageNum, setPageNum] = useState([0, item]);
   const [listNum, setListNum] = useState([0, itemList]);
-  const listRef = useRef();
+  const listRef = useRef(0);
 
   const toPrev = () => {
     setPageNum((prev) => [...prev.map((it) => it - item)]);
@@ -97,19 +100,21 @@ const Camp = ({ campingData }) => {
               .slice(pageNum[0], pageNum[1])}
           </div>
           <PageIdx className="pageIdx">
-            <li className="prev" onClick={() => (pageNum[0] ? toPrev() : null)}>
-              <a>
-                <FiChevronLeft />
-              </a>
-            </li>
+            <button
+              className="prev"
+              onClick={() => (pageNum[0] ? toPrev() : null)}
+            >
+              <FiChevronLeft />
+            </button>
             {Array.from(
               { length: Math.ceil(locate.length / item) },
               (v, k) => k + 1
             )
               .map((it, idx) => {
                 return (
-                  <li key={idx} ref={listRef}>
+                  <li key={idx}>
                     <a
+                      ref={listRef}
                       onClick={() => {
                         toIdx(idx);
                       }}
@@ -120,14 +125,12 @@ const Camp = ({ campingData }) => {
                 );
               })
               .slice(listNum[0], listNum[1])}
-            <li
+            <button
               className="next"
               onClick={() => (pageNum[1] < locate.length ? toNext() : null)}
             >
-              <a>
-                <FiChevronRight />
-              </a>
-            </li>
+              <FiChevronRight />
+            </button>
           </PageIdx>
         </>
       ) : (
@@ -154,19 +157,18 @@ const Camp = ({ campingData }) => {
               .slice(pageNum[0], pageNum[1])}
           </div>
           <PageIdx className="pageIdx">
-            <li className="prev" onClick={toPrev}>
-              <a>
-                <FiChevronLeft />
-              </a>
-            </li>
+            <button className="prev" onClick={toPrev}>
+              <FiChevronLeft />
+            </button>
             {Array.from(
               { length: Math.ceil(campingData.length / item) },
               (v, k) => k + 1
             )
               .map((it, idx) => {
                 return (
-                  <li key={idx} ref={listRef}>
+                  <li key={idx}>
                     <a
+                      ref={listRef}
                       onClick={() => {
                         toIdx(idx);
                       }}
@@ -177,11 +179,9 @@ const Camp = ({ campingData }) => {
                 );
               })
               .slice(listNum[0], listNum[1])}
-            <li className="next" onClick={toNext}>
-              <a>
-                <FiChevronRight />
-              </a>
-            </li>
+            <button className="next" onClick={toNext}>
+              <FiChevronRight />
+            </button>
           </PageIdx>
         </>
       )}

@@ -76,9 +76,6 @@ const Header = () => {
         </h1>
         {isLoginState.payload ? (
           <ul className="auth">
-            <li>
-              <NavLink to="/mypage">마이페이지</NavLink>
-            </li>
             <li
               className="logout"
               onClick={() => {

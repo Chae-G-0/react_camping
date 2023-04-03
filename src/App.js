@@ -13,7 +13,6 @@ import Signup from "./pages/auth/Signup";
 import Notice from "./pages/Notice";
 import Board from "./pages/Board/Board";
 import Write from "./pages/Board/Write";
-import Mypage from "./pages/Mypage";
 import BDitem from "./pages/Board/BDitem";
 import Footer from "./component/Footer";
 
@@ -57,7 +56,6 @@ function App() {
         <Route path="/write" element={<Write />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/mypage" element={<Mypage />} />
       </Routes>
       {/* <Footer /> */}
       <Totop />
