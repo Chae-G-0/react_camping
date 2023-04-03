@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.css": "/react_camping/static/css/main.e42747b2.css",
-    "main.js": "/react_camping/static/js/main.5a92ab5f.js",
+    "main.css": "/react_camping/static/css/main.78f9d3bf.css",
+    "main.js": "/react_camping/static/js/main.1611e148.js",
     "static/media/MainVisual.jpg": "/react_camping/static/media/MainVisual.fa8c70166c30db57d142.jpg",
+    "static/media/sliderImg01.jpg": "/react_camping/static/media/sliderImg01.e5c601052f4faf1805ed.jpg",
+    "static/media/sliderImg03.jpg": "/react_camping/static/media/sliderImg03.a37efaa22e88d2b21d58.jpg",
+    "static/media/sliderImg02.jpg": "/react_camping/static/media/sliderImg02.8529b279059343942e98.jpg",
     "static/media/slick.svg": "/react_camping/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/react_camping/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/react_camping/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/react_camping/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/react_camping/index.html",
-    "main.e42747b2.css.map": "/react_camping/static/css/main.e42747b2.css.map",
-    "main.5a92ab5f.js.map": "/react_camping/static/js/main.5a92ab5f.js.map"
+    "main.78f9d3bf.css.map": "/react_camping/static/css/main.78f9d3bf.css.map",
+    "main.1611e148.js.map": "/react_camping/static/js/main.1611e148.js.map"
   },
   "entrypoints": [
-    "static/css/main.e42747b2.css",
-    "static/js/main.5a92ab5f.js"
+    "static/css/main.78f9d3bf.css",
+    "static/js/main.1611e148.js"
   ]
 }
