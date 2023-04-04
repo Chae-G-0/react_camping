@@ -2,17 +2,18 @@ import React from "react";
 import styled from "styled-components";
 
 const FooterStyle = styled.footer`
-    height: 100px;
+    height: 80px;
     background: #333;
-    color: #fff;
+    color: #ddd;
     text-align: center;
-    line-height: 100px;
+    line-height: 80px;
+    font-size: 15px;
 `
 
 const Footer = () => {
   return (
     <FooterStyle>
-      <div className="inner">footer</div>
+      <div className="inner">포트폴리오 용도로 제작된 웹 사이트입니다.</div>
     </FooterStyle>
   );
 };

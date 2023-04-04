@@ -7,18 +7,17 @@ import { ISLOGIN } from "../../store/loginSlice";
 
 const SignInBox = styled.div`
   width: 400px;
-  margin: 0 auto;
+  min-height: calc(100vh - 160px);
+  margin: auto;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  justify-content: center;
+
   h2 {
     text-align: center;
     font-size: 21px;
-    line-height: 100px;
     color: #777;
+    margin: 0 0 30px 0;
   }
   label {
     text-align: left;

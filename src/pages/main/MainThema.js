@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 const SLIDE = [
   { id: 1, con: "" },
@@ -34,13 +35,19 @@ const MainThema = () => {
             return (
               <figure
                 key={it.id}
-                className={
-                  `Slide item0` + it.id + (idx === IDX ? " on" : "")
-                }
+                className={`Slide item0` + it.id + (idx === IDX ? " on" : "")}
               ></figure>
             );
           })}
         </Slider>
+      <div className="Arrows">
+        <button onClick={() => Slide.current.slickPrev()}>
+          <FiArrowLeft />
+        </button>
+        <button onClick={() => Slide.current.slickNext()}>
+          <FiArrowRight />
+        </button>
+      </div>
       </div>
     </section>
   );

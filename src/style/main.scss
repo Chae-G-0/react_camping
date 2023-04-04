@@ -57,13 +57,16 @@
         padding: 100px 0;
         
         .inner {
+            width: 1200px;
             display: flex;
+            margin: 0 auto;
 
             .titBox {
                 flex: 1;
 
                 h2 {
                     font-size: 25px;
+                    font-weight: 700;
                     text-align: left;
                     margin: 0 0 10px 0;
                 }
@@ -97,16 +100,21 @@
 
     .MainThema {
         padding: 0 0 100px 0;
+        position: relative;
 
         .inner {
+            width: 1200px;
+            margin: 0 auto;
+
             h2 {
                 font-size: 25px;
+                font-weight: 700;
                 text-align: left;
                 margin: 0 0 10px 0;
             }
 
             p {
-                margin: 0 0 15px 0;
+                margin: 0 0 20px 0;
             }
 
             figure {
@@ -115,12 +123,26 @@
                 background-position: bottom center;
                 background-repeat: no-repeat;
                 background-size: cover;
-                position: relative;
             }
 
             @for $i from 1 through 3 {
                 .item0#{$i} {
                     background-image: url(../../public/assets/sliderImg0#{$i}.jpg);
+                }
+            }
+
+            .Arrows {
+                display: flex;
+                gap: 100px;
+                justify-content: center;
+                padding: 30px 0 0 0;
+    
+                button {
+                    border: none;
+                    background: none;
+                    font-size: 27px;
+                    color: #333;
+                    cursor: pointer;
                 }
             }
         }
