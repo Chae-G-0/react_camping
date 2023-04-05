@@ -25,7 +25,6 @@ const boardWrite = createAsyncThunk(
         id: nextPostId,
       });
       if (res.status === 200) {
-        console.log("등록 됨!");
         alert("게시글이 등록되었습니다.");
         return;
       }
@@ -44,17 +43,14 @@ const boardEdit = createAsyncThunk("boardSlice/boardEdit", async (editInfo) => {
   return res;
 });
 
-const boardDelete = createAsyncThunk(
-  "boardSlice/boardDelete",
-  async (_id) => {
-    const res = await axios.delete("/api/boarddelete", {
-      data: {
-        _id: _id,
-      },
-    });
-    return res.data;
-  }
-);
+const boardDelete = createAsyncThunk("boardSlice/boardDelete", async (_id) => {
+  const res = await axios.delete("/api/boarddelete", {
+    data: {
+      _id: _id,
+    },
+  });
+  return res.data;
+});
 
 const boardSlice = createSlice({
   name: "boardSlice",
@@ -62,18 +58,15 @@ const boardSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(boardWrite.fulfilled, (state, action) => {
-      console.log("complete post");
       return state;
     });
     builder.addCase(boardData.fulfilled, (state, action) => {
       state.list = action.payload;
     });
     builder.addCase(boardDelete.fulfilled, (state, action) => {
-      console.log("delete");
       return state;
     });
     builder.addCase(boardEdit.fulfilled, (state, action) => {
-      console.log("edit");
       return state;
     });
   },

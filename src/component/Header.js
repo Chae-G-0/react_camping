@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { ISLOGIN } from "../store/loginSlice";
 
@@ -42,7 +42,6 @@ const HeaderStyle = styled.header`
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
   const isLoginState = useSelector((state) => state.login.isLoginState);
 
   const handlelogout = () => {
@@ -50,11 +49,7 @@ const Header = () => {
     localStorage.removeItem("userId");
     dispatch(ISLOGIN(false));
     alert("로그아웃 되었습니다.");
-    if (location.state !== null) {
-      navigate(location.state.locate);
-    } else {
-      navigate("/", { replace: true });
-    }
+    navigate("/", { replace: true });
   };
 
   return (
