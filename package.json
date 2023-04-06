@@ -2,7 +2,6 @@
   "name": "react_camping",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Chae-G-0.github.io/react_camping/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
