@@ -20,16 +20,16 @@ function App() {
   const [campingData, setCampingData] = useState([]);
   const [cityList, setCityList] = useState([]);
 
+  const getData = async () => {
+    const res = await axios.get(process.env.REACT_APP_API_URL);
+    setCampingData(res.data.response.body.items.item);
+    const doNm = res.data.response.body.items.item.map((it) => it.doNm).sort();
+    const doList = new Set(doNm);
+    setCityList(doList);
+  };
+
   useEffect(() => {
-    const url = process.env.REACT_APP_API_URL;
-    axios.get(url).then((res) => {
-      setCampingData(res.data.response.body.items.item);
-      const doNm = res.data.response.body.items.item
-        .map((it) => it.doNm)
-        .sort();
-      const doList = new Set(doNm);
-      setCityList(doList);
-    });
+    getData();
   }, []);
 
   return (
