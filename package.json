@@ -14,6 +14,7 @@
     "body-parser": "^1.20.1",
     "concurrently": "^7.6.0",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "gsap": "^3.11.4",
@@ -41,7 +42,7 @@
   "scripts": {
     "start": "set PORT=3000 && react-scripts start",
     "server": "cd server && nodemon server",
-    "build": "react-scripts build",
+    "build": "cross-env REACT_APP_API_URL=999.99.99.99 react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
