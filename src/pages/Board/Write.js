@@ -47,7 +47,7 @@ const Write = () => {
   };
 
   return (
-    <section className="Write">
+    <section className="Board Write">
       <div className="inner BoardList">
         <table className="BoardTable">
           <thead>
