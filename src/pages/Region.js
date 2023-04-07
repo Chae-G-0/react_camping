@@ -32,24 +32,35 @@ const RegionList = styled.ul`
   }
 `;
 
+const Loading = styled.div`
+  min-height: 90vh;
+  text-aligh: center;
+`
+
 const Region = ({ campingData, cityList }) => {
   return (
-    <div className="Region">
-      <RegionList>
-        <li>
-          <Link to="/region">전체</Link>
-        </li>
-        {[...cityList].map((doNm, idx) => {
-          return (
-            <li key={idx}>
-              <NavLink to={`/region/camp/${doNm}`}>{doNm}</NavLink>
+    <>
+      {campingData ? (
+        <div className="Region">
+          <RegionList>
+            <li>
+              <Link to="/region">전체</Link>
             </li>
-          );
-        })}
-      </RegionList>
-      <Camp campingData={campingData} />
-      <Totop />
-    </div>
+            {[...cityList].map((doNm, idx) => {
+              return (
+                <li key={idx}>
+                  <NavLink to={`/region/camp/${doNm}`}>{doNm}</NavLink>
+                </li>
+              );
+            })}
+          </RegionList>
+          <Camp campingData={campingData} />
+          <Totop />
+        </div>
+      ) : (
+        <Loading>loading</Loading>
+      )}
+    </>
   );
 };
 
