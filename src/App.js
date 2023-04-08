@@ -21,7 +21,9 @@ function App() {
   const [cityList, setCityList] = useState([]);
 
   const getData = async () => {
-    const res = await axios.get(process.env.REACT_APP_API_URL);
+    const res = await axios.get(
+      "https://apis.data.go.kr/B551011/GoCamping/basedList?numOfRows=100&pageNo=1&MobileOS=WIN&MobileApp=camping&serviceKey=ywRlJa7ppqDu3r%2BZgaoE4hxgKL03rb%2FZH6YKSCyaOqRJZa%2B7MMiFJBXuSswp2Hph6Go86ji9%2BmET3T%2BKutJnFg%3D%3D&_type=json"
+    );
     setCampingData(res.data.response.body.items.item);
     const doNm = res.data.response.body.items.item.map((it) => it.doNm).sort();
     const doList = new Set(doNm);
