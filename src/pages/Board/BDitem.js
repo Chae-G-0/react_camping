@@ -59,7 +59,7 @@ const BDitem = () => {
   }, [id]);
 
   return (
-    <section>
+    <section className="Board">
       {isEdit ? (
         <div className="inner EditItem">
           <div className="tit">
