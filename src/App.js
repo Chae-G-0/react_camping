@@ -23,7 +23,6 @@ function App() {
   const getData = async () => {
     const res = await axios.get(process.env.REACT_APP_API_URL);
     setCampingData(res.data.response.body.items.item);
-    console.log(res.data.response.body)
     const doNm = res.data.response.body.items.item.map((it) => it.doNm).sort();
     const doList = new Set(doNm);
     setCityList(doList);
