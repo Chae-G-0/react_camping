@@ -23,6 +23,7 @@ function App() {
   const getData = async () => {
     const res = await axios.get(process.env.REACT_APP_API_URL);
     setCampingData(res.data.response.body.items.item);
+    console.log(res.data.response.body)
     const doNm = res.data.response.body.items.item.map((it) => it.doNm).sort();
     const doList = new Set(doNm);
     setCityList(doList);
@@ -33,33 +34,39 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Header />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route
-          path="/region"
-          element={<Region campingData={campingData} cityList={cityList} />}
-        >
-          <Route
-            path="camp/:doNm"
-            element={<Camp campingData={campingData} cityList={cityList} />}
-          />
-        </Route>
-        <Route
-          path="/detail/:id"
-          element={<Detail campingData={campingData} />}
-        />
-        <Route path="/notice" element={<Notice />} />
-        <Route path="/board" element={<Board />} />
-        <Route path="/boarditem/:id" element={<BDitem />} />
-        <Route path="/write" element={<Write />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-      <Footer />
-      <Totop />
-    </div>
+    <>
+      {campingData ? (
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route
+              path="/region"
+              element={<Region campingData={campingData} cityList={cityList} />}
+            >
+              <Route
+                path="camp/:doNm"
+                element={<Camp campingData={campingData} cityList={cityList} />}
+              />
+            </Route>
+            <Route
+              path="/detail/:id"
+              element={<Detail campingData={campingData} />}
+            />
+            <Route path="/notice" element={<Notice />} />
+            <Route path="/board" element={<Board />} />
+            <Route path="/boarditem/:id" element={<BDitem />} />
+            <Route path="/write" element={<Write />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+          <Footer />
+          <Totop />
+        </div>
+      ) : (
+        <div>Loading</div>
+      )}
+    </>
   );
 }
 
