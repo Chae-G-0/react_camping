@@ -42,7 +42,7 @@
   "scripts": {
     "start": "set PORT=3000 && react-scripts start",
     "server": "cd server && nodemon server",
-    "build": "cross-env REACT_APP_API_URL=999.99.99.99 react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
