@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import "../style/Detail.scss";
-// import { Map, MapMarker } from "react-kakao-maps-sdk";
+import { Map, MapMarker } from "react-kakao-maps-sdk";
 
 const NoImg = styled.div`
   flex: 1;
@@ -21,12 +21,12 @@ const Detail = ({ campingData }) => {
     (it) => parseInt(id) === parseInt(it.contentId)
   );
 
-  // const lat = detail[0].mapY;
-  // const lng = detail[0].mapX;
+  const lat = detail[0].mapY;
+  const lng = detail[0].mapX;
 
-  // useEffect(() => {
-  //   detail.lenght > 0 && <Map />;
-  // }, [lat, lng]);
+  useEffect(() => {
+    detail.lenght > 0 && <Map />;
+  }, [lat, lng]);
 
   return (
     detail && (
@@ -123,7 +123,7 @@ const Detail = ({ campingData }) => {
                   </div>
                 </div>
               </div>
-              {/* <div className="map">
+              <div className="map">
                 <h4>캠핑장 위치</h4>
                 <Map
                   center={{
@@ -139,7 +139,7 @@ const Detail = ({ campingData }) => {
                 >
                   <MapMarker position={{ lat: lat, lng: lng }} />
                 </Map>
-              </div> */}
+              </div>
             </div>
           );
         })}
