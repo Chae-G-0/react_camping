@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import "../style/Detail.scss";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
@@ -20,6 +20,7 @@ const Detail = ({ campingData }) => {
   const detail = campingData.filter(
     (it) => parseInt(id) === parseInt(it.contentId)
   );
+  const navigate = useNavigate()
 
   const lat = detail[0].mapY;
   const lng = detail[0].mapX;
@@ -85,6 +86,9 @@ const Detail = ({ campingData }) => {
                       </tr>
                     </tbody>
                   </table>
+                  <button onClick={()=>{navigate("/region");}}>
+                    목록으로
+                  </button>
                 </div>
               </div>
               <div className="facInfo">
